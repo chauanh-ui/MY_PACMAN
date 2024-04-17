@@ -1,9 +1,13 @@
 
-#include <iostream>
-#include <SDL.h>
-int main(int argc, char* argv[])
-{
-    std::cout << "Hello World!\n";
-    return 0;
-}
+#include"GameObject.h"
 
+int main(int argc, char* argv[]) {
+	GameObject* game = new GameObject;
+	game->initialize();
+	game->running();
+	//game->renderGame();
+	waitUntilKeyPressed();
+	std::cout << "SUCCESS!\n";
+	delete game;
+	return 0;
+}
