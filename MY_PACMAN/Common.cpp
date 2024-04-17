@@ -1,5 +1,5 @@
-#include"Common.h"
-
+#include "Common.h"
+#include "Defs.h"
 SDL_Texture* loadImage(std::string path, SDL_Renderer* renderer)
 {
     SDL_Texture* newTexture = nullptr;

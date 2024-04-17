@@ -8,7 +8,7 @@
 #include<SDL_image.h>
 #include<SDL_mixer.h>
 #include<SDL_ttf.h>
-#include"Defs.h"
+
 
 // Common.h declares global functions used through out the whole game
 

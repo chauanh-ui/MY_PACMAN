@@ -6,10 +6,13 @@ void GameObject::initialize() {
 	gameState = GameState::Play;
 	std::cout << "initialize GameObject\n";
 	initSDL(gWindow, gRenderer);
+	map = new Map(gRenderer);
 }
 
 void GameObject::renderGame() {
+	//SDL_SetRenderDrawColor()
 	SDL_RenderClear(gRenderer);
+	map->draw(gRenderer);
 	SDL_RenderPresent(gRenderer);
 }
 
