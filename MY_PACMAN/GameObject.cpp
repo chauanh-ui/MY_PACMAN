@@ -35,12 +35,13 @@ void GameObject::running() {
 				break;
 			}
 			else if (e.type == SDL_KEYDOWN) {
-				;
+				map->changeMapColor(e);;
 			}
 			else {
 				;
 			}
 		}
+		
 		renderGame();
 	}
 }

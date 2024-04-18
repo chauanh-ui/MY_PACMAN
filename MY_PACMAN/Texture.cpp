@@ -1,6 +1,6 @@
 #include "Texture.h"
 
-Texture:: Texture(std::string imagePath,const SDL_Rect& _src,const SDL_Rect& _dst, SDL_Renderer* renderer) {
+Texture:: Texture(std::string imagePath,const SDL_Rect& _src, const SDL_Rect& _dst, SDL_Renderer* renderer) {
 	texture = loadImage(imagePath, renderer);
 	src = _src;
 	dst = _dst;
@@ -13,8 +13,8 @@ void Texture::render(SDL_Renderer* renderer) {
 	SDL_RenderCopy(renderer, texture, &src, &dst);
 }
 
-void Texture::setColor(uint8_t red, uint8_t green, uint8_t blue) {
-	SDL_SetTextureColorMod(texture, red, green, blue);
+void Texture::setColor(SDL_Color color) {
+	SDL_SetTextureColorMod(texture, color.r, color.g, color.b);
 }
 
 void Texture::setBlendMode(SDL_BlendMode blending) {

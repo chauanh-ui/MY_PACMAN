@@ -12,7 +12,7 @@ public:
 	Texture(std::string imagePath, const SDL_Rect& _src, const SDL_Rect& _dst, SDL_Renderer* renderer);
 	~Texture();
 	void render(SDL_Renderer* renderer);
-	void setColor(uint8_t red, uint8_t green, uint8_t blue); 
+	void setColor(SDL_Color color); 
 	void setBlendMode(SDL_BlendMode blending);
 	void setAlpha(uint8_t alpha);
 };
