@@ -5,12 +5,13 @@
 #include "Common.h"
 #include "Defs.h"
 #include "Map.h"
-
+#include "Entity.h"
 class GameObject {
 	SDL_Window* gWindow;
 	SDL_Renderer* gRenderer;
 	SDL_Event e;
 	Map* map;
+	Entity* simplePacman;
 
 public:
 	GameState gameState;

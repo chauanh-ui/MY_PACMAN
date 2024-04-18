@@ -9,11 +9,12 @@
 class Map
 {
 	Texture* mapTexture = nullptr;
-	Texture* smallFoodTexture = nullptr;
-	unsigned char numericMap[TOTAL_BLOCK]; // mảng 1 chiều chứa các kí tự phân biệt các loại block
+	//Texture* smallFoodTexture = nullptr;
+	//Pacman pacMan; // sau sẽ tạo 1 class riêng cho pacman
 	//void reset();
 	
 public:
+	unsigned char numericMap[TOTAL_BLOCK_Y][TOTAL_BLOCK_X]; // mảng 2 chiều chứa các kí tự phân biệt các loại block
 	Map(SDL_Renderer* renderer);
 	void changeMapColor(SDL_Event& e);
 	void draw(SDL_Renderer* renderer);

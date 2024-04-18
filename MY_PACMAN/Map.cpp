@@ -22,8 +22,6 @@ void Map::changeMapColor(SDL_Event& e) {
 	case SDLK_4:
 		color = PURPLE;
 		break;
-	default:
-		break;
 	}
 	mapTexture->setColor(color);
 }
@@ -32,28 +30,31 @@ void Map::draw(SDL_Renderer* renderer) {
 }
 
 void Map::loadNumericMap() {
-	for (unsigned short i = 0; i < TOTAL_BLOCK_Y * TOTAL_BLOCK_X; i++) {
-		switch (charMap[i]) {
-		case '#':
-			numericMap[i] = WALL;
-			break;
-		case '=':
-			numericMap[i] = DOOR;
-			break;
-		case '.':
-			numericMap[i] = PELLET;
-			break;
-		case 'o':
-			numericMap[i] = ENERGIZER;
-			break;
-		default:
-			numericMap[i] = NOTHING;
-			break;
+	for (int i = 0; i < TOTAL_BLOCK_Y; i++) {
+		for (int j = 0; j < TOTAL_BLOCK_X; j++) {
+			switch (charMap[i * TOTAL_BLOCK_X + j]) {
+				case '#':
+					numericMap[i][j] = WALL;
+					break;
+				case '=':
+					numericMap[i][j] = DOOR;
+					break;
+				case '.':
+					numericMap[i][j] = PELLET;
+					break;
+				case 'o':
+					numericMap[i][j] = ENERGIZER;
+					break;
+				default:
+					numericMap[i][j] = NOTHING;
+					break;
+			}
 		}
+		
 	}
 	/*for (int i = 0; i < TOTAL_BLOCK_Y; i++) {
 		for (int j = 0; j < TOTAL_BLOCK_X; j++) {
-			std::cout << (int) numericMap[i * TOTAL_BLOCK_X + j] << " ";
+			std::cout << numericMap[i][j] << " ";
 		}
 		std::cout << std::endl;
 	}*/

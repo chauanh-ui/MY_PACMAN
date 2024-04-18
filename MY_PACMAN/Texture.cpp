@@ -9,6 +9,13 @@ Texture:: Texture(std::string imagePath,const SDL_Rect& _src, const SDL_Rect& _d
 Texture:: ~Texture() {
 	texture = NULL;
 }
+
+void Texture::setSrc(SDL_Rect& _src) {
+	src = _src;
+}
+void Texture::setDst(SDL_Rect& _dst) {
+	dst = _dst;
+}
 void Texture::render(SDL_Renderer* renderer) {
 	SDL_RenderCopy(renderer, texture, &src, &dst);
 }

@@ -11,6 +11,8 @@ class Texture
 public:
 	Texture(std::string imagePath, const SDL_Rect& _src, const SDL_Rect& _dst, SDL_Renderer* renderer);
 	~Texture();
+	void setSrc(SDL_Rect& _src);
+	void setDst(SDL_Rect& _dst);
 	void render(SDL_Renderer* renderer);
 	void setColor(SDL_Color color); 
 	void setBlendMode(SDL_BlendMode blending);
