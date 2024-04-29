@@ -6,14 +6,15 @@ void GameObject::initialize() {
 	gameState = GameState::Play;
 	std::cout << "initialize GameObject\n";
 	initSDL(gWindow, gRenderer);
-	map = new Map(gRenderer);
+	map = new Texture(IMAGE_MAP_PATH, IMAGE_MAP_SRC, IMAGE_MAP_DST, gRenderer);
+	mapColor = { 0, 0, 255 };
 	simplePacman = new Entity(gRenderer, PACMAN);
 }
 
 void GameObject::renderGame() {
 	//SDL_SetRenderDrawColor()
 	SDL_RenderClear(gRenderer);
-	map->draw(gRenderer);
+	map->render(gRenderer);
 	simplePacman->renderEntity(gRenderer);
 	SDL_RenderPresent(gRenderer);
 }
@@ -37,14 +38,14 @@ void GameObject::running() {
 				break;
 			}
 			else if (e.type == SDL_KEYDOWN) {
-				map->changeMapColor(e);
+				/*map->changeMapColor(e);*/
+				map->setColor(mapColor);
 				simplePacman->move(e);
 			}
 			else {
 				;
 			}
 		}
-	
 		renderGame();
 	}
 }

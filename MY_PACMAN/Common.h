@@ -9,7 +9,6 @@
 #include<SDL_mixer.h>
 #include<SDL_ttf.h>
 
-
 // Common.h declares global functions used through out the whole game
 
 TTF_Font* loadFont(std::string font_path);
@@ -28,5 +27,6 @@ void playMusic(Mix_Music* gMusic);
 void logSDLError(std::ostream& os, const std::string& msg, bool fatal);
 void initSDL(SDL_Window*& window, SDL_Renderer*& renderer);
 void waitUntilKeyPressed();
+
 
 #endif COMMON_H

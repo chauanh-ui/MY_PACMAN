@@ -10,7 +10,8 @@ class GameObject {
 	SDL_Window* gWindow;
 	SDL_Renderer* gRenderer;
 	SDL_Event e;
-	Map* map;
+	Texture* map;
+	SDL_Color mapColor;
 	Entity* simplePacman;
 
 public:
