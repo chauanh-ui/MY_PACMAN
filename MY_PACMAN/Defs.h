@@ -114,12 +114,35 @@ const int PACMAN = 0, BLINKY = 1, INKY = 2, PINKY = 3, CLYDE = 4, NO_ONE = 5;
 // direction
 const int DIRECTION_UP = 0, DIRECTION_DOWN = 1, DIRECTION_LEFT = 2, DIRECTION_RIGHT = 3;
 
+const int LIVING_PAC_FRAMES = 3;
+const int DEATH_PAC_FRAMES = 10;
+const int GHOST_BODY_FRAMES = 6;
+const int GHOST_EYE_FRAMES = 5;
+const int FRUIT_FRAMES = 8;
+
+
 //Pacman
 const std::string PACMAN_IMAGE_PATH = "Images//Lives32.png";
 const SDL_Rect PACMAN_IMAGE_SRC = { 0, 0, 32, 32 };
 const SDL_Rect PACMAN_IMAGE_CONTAINER = {13 * BLOCKSIZE16 + BLOCKSIZE16 / 2, 19 * BLOCKSIZE16 + BLOCKSIZE16 / 2,
 2 * BLOCKSIZE16, 2 * BLOCKSIZE16};
 
+const std::vector<SDL_Rect> PACMAN_HORIZONTAL_CLIPS = {
+	{0,0,32,32},
+	{32,0,32,32},
+	{64,0,32,32},
+};
+
+const std::vector<SDL_Rect> PACMAN_VERTICAL_CLIPS = {
+	{0, 0, 32, 32},
+	{0, 32, 32, 32},
+	{0, 64, 32, 32}
+};
+
+const std::string PACMAN_LEFT_PATH = "Images//Pacman32Left.png";
+const std::string PACMAN_RIGHT_PATH = "Images//Pacman32Right.png";
+const std::string PACMAN_UP_PATH = "Images//Pacman32Up.png";
+const std::string PACMAN_DOWN_PATH = "Images//Pacman32Down.png";
 
 
 // enum class

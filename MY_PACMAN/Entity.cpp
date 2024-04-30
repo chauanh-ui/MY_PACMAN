@@ -19,7 +19,6 @@ Entity::Entity(SDL_Renderer* renderer, const int _entityType) {
 	center.y = container.y + container.h / 2;
 	std::cout << container.x << std::endl;
 	entityTexture = new Texture(imagePath ,src, container, renderer);
-	
 }
 
 void Entity::setContainer(SDL_Rect& _container) {

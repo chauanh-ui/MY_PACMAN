@@ -6,6 +6,7 @@
 
 #include "Defs.h"
 #include "Texture.h"
+#include "Animation.h"
 
 class Entity
 {
@@ -14,7 +15,7 @@ class Entity
 	int entityType = PACMAN;
 	SDL_Rect container = { 0, 0, 32, 32 }; // container là dst để load texture // dst
 	SDL_Point center; // vị trí tâm của container để check collision
-
+	std::string imagePath;
 	bool turnAllows[4] = { true, true, true, true }; // right left up down
 	int speed = 2;
 public:

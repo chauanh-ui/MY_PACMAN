@@ -1,6 +1,6 @@
 #include "Texture.h"
 
-Texture:: Texture(std::string imagePath,const SDL_Rect& _src, const SDL_Rect& _dst, SDL_Renderer* renderer) {
+Texture:: Texture(const std::string imagePath,const SDL_Rect& _src, const SDL_Rect& _dst, SDL_Renderer* renderer) {
 	texture = loadImage(imagePath, renderer);
 	src = _src;
 	dst = _dst;
