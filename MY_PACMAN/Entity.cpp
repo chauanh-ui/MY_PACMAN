@@ -4,6 +4,7 @@ Entity::Entity(int _entityType, SDL_Renderer* renderer) {
 	entityType = _entityType;
 	currentFrames = 0;
 	isAlive = true;
+	facing = 0;
 }
 
 void Entity::initFrames() {
@@ -31,10 +32,20 @@ void Entity::tick() {
 //}
 
 void Entity::renderEntity(SDL_Renderer* renderer) {
-	std::cout << "currentFrame: " << currentFrames << std::endl;
 	entityTexture->setSrc(clips[currentFrames / totalFrames]); // clips nay lay dau ra ??? -> cho vao hay gi
 	entityTexture->setDst(currentPos); //update thang khi goi ham move
-	entityTexture->render(renderer, 90 * facing, SDL_FLIP_VERTICAL);
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << "goc trong ham render: " << 90 * facing << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+	entityTexture->render(renderer, 90.0f * (double) facing);
 	SDL_Delay(20);
 	tick();
 }
@@ -42,7 +53,7 @@ void Entity::renderEntity(SDL_Renderer* renderer) {
 void Entity::renderToStartPosition(SDL_Renderer* renderer) {
 	entityTexture->setSrc(clips[currentFrames / totalFrames]); // clips nay lay dau ra ??? -> cho vao hay gi
 	entityTexture->setDst(startPos); //update thang khi goi ham move
-	entityTexture->render(renderer, 90 * facing);
+	entityTexture->render(renderer, 90.0f * (double) facing);
 	SDL_Delay(20);
 	tick();
 }

@@ -23,7 +23,7 @@ public:
 	int speed;
 	int totalFrames;
 	bool isAlive;
-	int facing = 0;
+	int facing;
 
 
 	Entity(int _entityType, SDL_Renderer* renderer);
@@ -35,6 +35,9 @@ public:
 	}
 	void initFrames();
 	void tick();
+	void setFacing(int _facing) {
+		facing = _facing;
+	}
 	void setStartPos(SDL_Rect _startPos) {
 		startPos = _startPos;
 	}

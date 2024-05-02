@@ -29,7 +29,7 @@ public:
 		angle = _angle;
 	}
 
-	void render(SDL_Renderer* renderer, double angle = 0, SDL_RendererFlip flip = SDL_FLIP_NONE);
+	void render(SDL_Renderer* renderer, double angle = 0);
 
 	void setColor(SDL_Color color); 
 };

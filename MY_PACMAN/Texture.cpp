@@ -17,11 +17,12 @@ Texture:: ~Texture() {
 	}
 }
 
-void Texture::render(SDL_Renderer* renderer, double angle, SDL_RendererFlip flip) {
-	SDL_Point center;
-	center.x = dst.x + dst.w / 2;
-	center.y = dst.y + dst.y / 2;
-	SDL_RenderCopyEx(renderer, texture, &src, &dst, angle, &center, flip);
+void Texture::render(SDL_Renderer* renderer, double angle) {
+	std::cout << "texture x: " << dst.x << " texture y: " << dst.y << std::endl;
+	std::cout << "texture w: " << dst.x << " texture h: " << dst.y << std::endl;
+	std::cout << "goc: " << angle << std::endl;
+	
+	SDL_RenderCopyEx(renderer, texture, &src, &dst, angle, nullptr, SDL_FLIP_NONE);
 }
 
 
