@@ -41,7 +41,7 @@ int board[TOTAL_BLOCK_Y][TOTAL_BLOCK_X] = {
 };
 
 
-SDL_Texture* loadImage(std::string path, SDL_Renderer* renderer)
+SDL_Texture* loadImage(const std::string path, SDL_Renderer* renderer)
 {
     SDL_Texture* newTexture = nullptr;
     SDL_Surface* loadedSurface = IMG_Load(path.c_str());
@@ -187,5 +187,15 @@ void waitUntilKeyPressed()
             (e.type == SDL_KEYDOWN || e.type == SDL_QUIT))
             return;
         SDL_Delay(100);
+    }
+}
+
+
+void InitFrames(int totalFrames, SDL_Rect spriteClips[], int currentBlockSize) {
+    for (int i = 0; i < totalFrames; i++) {
+        spriteClips[i].x = i * currentBlockSize;
+        spriteClips[i].y = 0;
+        spriteClips[i].w = currentBlockSize;
+        spriteClips[i].h = currentBlockSize;
     }
 }

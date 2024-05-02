@@ -6,18 +6,32 @@
 class Texture
 {
 	SDL_Texture* texture = nullptr;
-	int w = 0;
-	int h = 0;
+	SDL_Rect src; // phan clip anh
+	SDL_Rect dst; // phan anh render len man hinh
+	double angle;
+	//SDL_Point center;
 
 public:
-	Texture(const std::string imagePath, const SDL_Rect& _src, const SDL_Rect& _dst, SDL_Renderer* renderer);
+	//Texture(const std::string imagePath, const SDL_Rect& _src, const SDL_Rect& _dst, SDL_Renderer* renderer);
+	Texture(std::string imagePath, SDL_Renderer* renderer);
 	~Texture();
-	void setSrc(SDL_Rect& _src);
-	void setDst(SDL_Rect& _dst);
-	void render(SDL_Renderer* renderer);
+	/*void loadFromFile(const std::string imagePath, SDL_Renderer* renderer) {
+		texture = loadImage(imagePath, renderer);
+	}*/
+
+	void setDst(SDL_Rect _dst) {
+		dst = _dst;
+	}
+	void setSrc(SDL_Rect _src) {
+		src = _src;
+	}
+	void setAngle(double _angle) {
+		angle = _angle;
+	}
+
+	void render(SDL_Renderer* renderer, double angle = 0, SDL_RendererFlip flip = SDL_FLIP_NONE);
+
 	void setColor(SDL_Color color); 
-	void setBlendMode(SDL_BlendMode blending);
-	void setAlpha(uint8_t alpha);
 };
 
 #endif TEXTURE_H

@@ -4,10 +4,12 @@
 #include<iostream>
 
 #include <SDL.h>
+#include <vector>
 
 // Defs is used to define global const value to avoid "magic numbers"
 // Using ALL-CAP words
 const int BLOCKSIZE16 = 16; // dimension of 1 single block
+const int BLOCKSIZE32 = 32;
 const int TOTAL_BLOCK_X = 28;
 const int TOTAL_BLOCK_Y = 36;
 const int TOTAL_BLOCK = TOTAL_BLOCK_X * TOTAL_BLOCK_Y;
@@ -100,6 +102,9 @@ extern int board[TOTAL_BLOCK_Y][TOTAL_BLOCK_X];
 
 //blocktype
 const int WALL = 0, DOOR = 1, PELLET = 2, ENERGIZER = 3, NOTHING = 4;
+const int PELLET_SCORE = 10;
+const int ENERGIZER_SCORE = 50;
+const int MAX_FRAMES = 10;
 
 // map color
 const SDL_Color GREEN = { 77, 196, 124 };
@@ -122,15 +127,15 @@ const int FRUIT_FRAMES = 8;
 
 
 //Pacman
-const std::string PACMAN_IMAGE_PATH = "Images//Lives32.png";
+const std::string PACMAN_IMAGE_PATH = "Images//PacMan32.png";
 const SDL_Rect PACMAN_IMAGE_SRC = { 0, 0, 32, 32 };
-const SDL_Rect PACMAN_IMAGE_CONTAINER = {13 * BLOCKSIZE16 + BLOCKSIZE16 / 2, 19 * BLOCKSIZE16 + BLOCKSIZE16 / 2,
+const SDL_Rect PACMAN_START_POS = {13 * BLOCKSIZE16 + BLOCKSIZE16 / 2, 19 * BLOCKSIZE16 + BLOCKSIZE16 / 2,
 2 * BLOCKSIZE16, 2 * BLOCKSIZE16};
 
 const std::vector<SDL_Rect> PACMAN_HORIZONTAL_CLIPS = {
 	{0,0,32,32},
 	{32,0,32,32},
-	{64,0,32,32},
+	{64,0,32,32}
 };
 
 const std::vector<SDL_Rect> PACMAN_VERTICAL_CLIPS = {
@@ -138,11 +143,8 @@ const std::vector<SDL_Rect> PACMAN_VERTICAL_CLIPS = {
 	{0, 32, 32, 32},
 	{0, 64, 32, 32}
 };
+const std::string PACMAN_RIGHT_PATH = "Images//Pacman32.png";
 
-const std::string PACMAN_LEFT_PATH = "Images//Pacman32Left.png";
-const std::string PACMAN_RIGHT_PATH = "Images//Pacman32Right.png";
-const std::string PACMAN_UP_PATH = "Images//Pacman32Up.png";
-const std::string PACMAN_DOWN_PATH = "Images//Pacman32Down.png";
 
 
 // enum class

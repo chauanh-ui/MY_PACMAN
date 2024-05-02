@@ -6,9 +6,12 @@ void GameObject::initialize() {
 	gameState = GameState::Play;
 	std::cout << "initialize GameObject\n";
 	initSDL(gWindow, gRenderer);
-	map = new Texture(IMAGE_MAP_PATH, IMAGE_MAP_SRC, IMAGE_MAP_DST, gRenderer);
-	mapColor = { 0, 0, 255 };
-	simplePacman = new Entity(gRenderer, PACMAN);
+	map = new Texture(IMAGE_MAP_PATH, gRenderer);
+	map->setColor(BLUE);
+	map->setSrc(IMAGE_MAP_SRC);
+	map->setDst(IMAGE_MAP_DST);
+	std::cout << "Cbi khoi tao pacman";
+	simplePacman = new Pacman(gRenderer);
 }
 
 void GameObject::renderGame() {
@@ -39,13 +42,14 @@ void GameObject::running() {
 			}
 			else if (e.type == SDL_KEYDOWN) {
 				/*map->changeMapColor(e);*/
-				map->setColor(mapColor);
+				std::cout << "chuan bi chay ham move pacman\n";
 				simplePacman->move(e);
 			}
 			else {
 				;
 			}
 		}
+		//std::cout << "chuan bi render game\n";
 		renderGame();
 	}
 }
