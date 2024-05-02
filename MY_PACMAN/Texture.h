@@ -5,9 +5,10 @@
 #include "Common.h"
 class Texture
 {
-	SDL_Texture* texture;
-	SDL_Rect src; // phần ảnh sẽ render
-	SDL_Rect dst; // phần màn hình ảnh sẽ được render lên
+	SDL_Texture* texture = nullptr;
+	int w = 0;
+	int h = 0;
+
 public:
 	Texture(const std::string imagePath, const SDL_Rect& _src, const SDL_Rect& _dst, SDL_Renderer* renderer);
 	~Texture();
