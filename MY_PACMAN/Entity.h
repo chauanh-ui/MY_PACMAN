@@ -46,7 +46,7 @@ public:
 	}
 	void checkCollisionWithWalls(int _x, int _y); // modify turnAllows, tinh toan vi tri tren numberic board
 	void move(SDL_Event& e);
-	void renderEntity(SDL_Renderer* renderer);
+	virtual void renderEntity(SDL_Renderer* renderer);
 	void renderToStartPosition(SDL_Renderer* renderer);
 	void resetTurnAllows();
 	//int getNumericMapPos(int row, int col);

@@ -109,9 +109,11 @@ const SDL_Color GREEN = { 77, 196, 124 };
 const SDL_Color BLUE = { 103, 178, 224 };
 const SDL_Color PINK = { 230, 126, 186 };
 const SDL_Color PURPLE = { 180, 126, 230 };
+const SDL_Color GHOST_FRIGHTEN_COLOR = { 0, 0, 255 };
+
 
 // entityType
-const int PACMAN = 0, BLINKY = 1, INKY = 2, PINKY = 3, CLYDE = 4, NO_ONE = 5;
+const int PACMAN = 0, BLINKY = 1, INKY = 2, PINKY = 3, CLYDE = 4, GHOST = 5;
 
 
 // direction
@@ -122,6 +124,18 @@ const int DEATH_PAC_FRAMES = 10;
 const int GHOST_BODY_FRAMES = 6;
 const int GHOST_EYE_FRAMES = 5;
 const int FRUIT_FRAMES = 8;
+
+const std::string GHOST_IMAGE_PATH = "Images//GhostBody32.png";
+const std::string EYES_IMAGE_PATH = "Images//GhostEyes32.png";
+const SDL_Rect GHOST_IMAGE_SRC = { 0, 0, 32, 32 };
+const SDL_Rect INKY_START_POS = { OFFSET_X + 13 * BLOCKSIZE16, OFFSET_Y + 17 * BLOCKSIZE16,
+2 * BLOCKSIZE16, 2 * BLOCKSIZE16 };
+const SDL_Rect BLINKY_START_POS = {};
+const SDL_Rect CLYDE_START_POS = {};
+const SDL_Rect PINKY_START_POS = {};
+
+
+
 
 
 //Pacman

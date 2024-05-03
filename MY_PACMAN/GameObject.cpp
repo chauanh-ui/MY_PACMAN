@@ -18,6 +18,7 @@ void GameObject::initialize() {
 	bigDot->setSrc(DOT_IMAGE_SRC);
 	testDot->setSrc(DOT_IMAGE_SRC);
 	std::cout << "Cbi khoi tao pacman";
+	inky = new Inky(gRenderer);
 	simplePacman = new Pacman(gRenderer);
 }
 
@@ -48,6 +49,7 @@ void GameObject::renderGame() {
 			
 		}
 	}
+	inky->renderGhost(gRenderer);
 	simplePacman->renderEntity(gRenderer);
 	
 	// test energize status
@@ -69,6 +71,7 @@ GameObject::~GameObject() {
 	delete bigDot;
 	delete testDot;
 	delete simplePacman;
+	delete inky;
 	SDL_DestroyRenderer(gRenderer);
 	SDL_DestroyWindow(gWindow);
 	Mix_CloseAudio();

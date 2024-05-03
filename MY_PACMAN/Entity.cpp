@@ -44,59 +44,6 @@ void Entity::renderToStartPosition(SDL_Renderer* renderer) {
 	tick();
 }
 
-
-//void Entity::move(SDL_Event& e) {
-//	std::cout << "Chay den day" << std::endl;
-//	resetTurnAllows();
-//	checkCollisionWithWalls(currentPos.x, currentPos.y);
-//	for (int i = 0; i < 4; i++) {
-//		std::cout << turnAllows[i] << " ";
-//	}
-//	if (e.key.keysym.sym == SDLK_UP) {
-//		currentPos.y -= speed;
-//		/*if (container.y < 0) {
-//			container.y = 0;
-//		}*/
-//		//checkCollisionWithWalls(container.x, container.y);
-//		if (!turnAllows[DIRECTION_UP]) {
-//			currentPos.y += speed;
-//		}
-//	}
-//	else if (e.key.keysym.sym == SDLK_DOWN) {
-//		currentPos.y += speed;
-//		/*if (container.y + container.h > WINDOW_HEIGHT) {
-//			container.y = WINDOW_HEIGHT - container.h;
-//		}*/
-//		//checkCollisionWithWalls(container.x, container.y);
-//		if (!turnAllows[DIRECTION_DOWN]) {
-//			currentPos.y -= speed;
-//		}
-//	}
-//	else if (e.key.keysym.sym == SDLK_LEFT) {
-//		currentPos.x -= speed;
-//		/*if (container.x < 0) {
-//			container.x = 0;
-//		}*/
-//		//checkCollisionWithWalls(container.x, container.y);
-//		if (!turnAllows[DIRECTION_LEFT]) {
-//			currentPos.x += speed;
-//		}
-//	}
-//	else if (e.key.keysym.sym == SDLK_RIGHT) {
-//		currentPos.x += speed;
-//		/*if (container.x + container.w > WINDOW_WIDTH) {
-//			container.x = WINDOW_WIDTH - container.w;
-//		}*/
-//		//checkCollisionWithWalls(container.x, container.y);
-//		if (!turnAllows[DIRECTION_RIGHT]) {
-//			currentPos.x -= speed;
-//		}
-//	}
-//	for (int i = 0; i < 4; i++) {
-//		std::cout << turnAllows[i] << " ";
-//	}
-//	std::cout << "vi tri: " << currentPos.x << " " << currentPos.y << "Het 1 luot" << std::endl;
-//}
 void Entity::resetTurnAllows() {
 	turnAllows[0] = true;
 	turnAllows[1] = true;

@@ -42,6 +42,12 @@
     <ClCompile Include="BaseObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Ghost.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Inky.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defs.h">
@@ -72,6 +78,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameStructure.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ghost.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Blinky.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Inky.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

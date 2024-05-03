@@ -8,7 +8,7 @@ private:
 	int score = 0;
 	int energizedStartTime = 0;
 	bool isEnergize = false;
-	int facing; // de xem no dang facing vs cai j, neu dang facing vs food thi an
+	//int facing; // de xem no dang facing vs cai j, neu dang facing vs food thi an
 	// facing hình như là trái phải trên dưới // cho vào để render đúng chiều
 
 

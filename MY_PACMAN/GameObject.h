@@ -7,6 +7,7 @@
 #include "Map.h"
 #include "Entity.h"
 #include "Pacman.h"
+#include "Inky.h"
 class GameObject {
 	SDL_Window* gWindow;
 	SDL_Renderer* gRenderer;
@@ -17,6 +18,7 @@ class GameObject {
 	Texture* smallDot;
 	Texture* bigDot;
 	Texture* testDot;
+	Inky* inky;
 	//Pacman* simplePacman;
 	Pacman* simplePacman;
 
