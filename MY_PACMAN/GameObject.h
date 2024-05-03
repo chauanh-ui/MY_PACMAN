@@ -12,8 +12,11 @@ class GameObject {
 	SDL_Renderer* gRenderer;
 	SDL_Event e;
 	Texture* map;
-	Texture* smallDot;
 	SDL_Color mapColor;
+
+	Texture* smallDot;
+	Texture* bigDot;
+	Texture* testDot;
 	//Pacman* simplePacman;
 	Pacman* simplePacman;
 

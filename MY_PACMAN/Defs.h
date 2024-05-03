@@ -129,9 +129,10 @@ const std::string PACMAN_IMAGE_PATH = "Images//PacMan32.png";
 const SDL_Rect PACMAN_IMAGE_SRC = { 0, 0, 32, 32 };
 const SDL_Rect PACMAN_START_POS = {OFFSET_X + 13 * BLOCKSIZE16 + BLOCKSIZE16 / 2, OFFSET_Y + 19 * BLOCKSIZE16 + BLOCKSIZE16 / 2,
 2 * BLOCKSIZE16, 2 * BLOCKSIZE16};
+const int ENERGIZED_DURATION = 30;
 
-
-const std::string DOT_IMAGE_PATH = "Images//Pellet24.png";
+const std::string SMALL_DOT_IMAGE_PATH = "Images//Pellet24.png";
+const std::string BIG_DOT_IMAGE_PATH = "Images//Energizer24.png";
 const SDL_Rect DOT_IMAGE_SRC = { 0,0,24,24 };
 
 

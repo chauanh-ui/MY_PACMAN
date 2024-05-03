@@ -18,10 +18,6 @@ Texture:: ~Texture() {
 }
 
 void Texture::render(SDL_Renderer* renderer, double angle) {
-	std::cout << "texture x: " << dst.x << " texture y: " << dst.y << std::endl;
-	std::cout << "texture w: " << dst.x << " texture h: " << dst.y << std::endl;
-	std::cout << "goc: " << angle << std::endl;
-	
 	SDL_RenderCopyEx(renderer, texture, &src, &dst, angle, nullptr, SDL_FLIP_NONE);
 }
 

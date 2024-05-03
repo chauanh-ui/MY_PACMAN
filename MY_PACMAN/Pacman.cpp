@@ -3,25 +3,16 @@
 #include <vector>
 
 Pacman::Pacman(SDL_Renderer* renderer): Entity (PACMAN, renderer) {
-	std::cout << "Khoi tao pacman\n";
 	speed = BLOCKSIZE16;
 	entityTexture = new Texture(PACMAN_RIGHT_PATH, renderer);
 	setStartPos(PACMAN_START_POS);
 	currentPos = startPos;
 	setTotalFrames(LIVING_PAC_FRAMES);
-	std::cout << totalFrames << std::endl;
 	clips.resize(totalFrames);
-	std::cout << clips.size();
 	initFrames();
 }
 void Pacman::move(SDL_Event& e) {
-	std::cout << "chay den ham move" << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << "x: " << currentPos.x << " " << "y: " << currentPos.y;
+
 	resetTurnAllows();
 	checkCollisionWithWalls(currentPos.x, currentPos.y);
 	std::cout << std::endl;
@@ -60,19 +51,15 @@ void Pacman::move(SDL_Event& e) {
 		setFacing(DIRECTION_RIGHT);
 	}
 	eat(currentPos.x, currentPos.y);
-	std::cout << "goc trong ham move: " << 90.0f * facing << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << "Chay het 1 luot ham move\n";
-	std::cout << "x: " << currentPos.x << " y: " << currentPos.y << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
+	if (isEnergize) {
+		std::cout << "EEEEEEEEEEEEEEEEEEEEEEEEEEEEE\n";
+		std::cout << "Energized start time: " << energizedStartTime << std::endl;
+
+		startEnergizedTime();
+		if (energizedStartTime == ENERGIZED_DURATION) {
+			resetEnergizedStatus();
+		}
+	}
 	
 }
 void Pacman::eat(int x, int y) {
@@ -82,7 +69,15 @@ void Pacman::eat(int x, int y) {
 	int col = center_x / BLOCKSIZE16;
 	if (board[row][col] == PELLET) {
 		board[row][col] = NOTHING;
+		score += PELLET_SCORE;
 
+	}
+	else if (board[row][col] == ENERGIZER) {
+		board[row][col] = NOTHING;
+		score += ENERGIZER_SCORE;
+		isEnergize = true;
+		std::cout << "SSSSSSSSSSSSSSSSSSSSSSSSSSSS\n";
+		std::cout << "Score: " << score;
 	}
 }
 Pacman::~Pacman()

@@ -17,11 +17,9 @@ void Entity::initFrames() {
 }
 
 void Entity::tick() {
-	std::cout << "Tang currentFrame\n";
 	currentFrames = currentFrames + 1;
 	std::cout << totalFrames << std::endl;
 	if (currentFrames / totalFrames >= totalFrames) {
-		std::cout << "chay vo if\n";
 		currentFrames = 0;
 	}
 	
@@ -34,17 +32,6 @@ void Entity::tick() {
 void Entity::renderEntity(SDL_Renderer* renderer) {
 	entityTexture->setSrc(clips[currentFrames / totalFrames]); // clips nay lay dau ra ??? -> cho vao hay gi
 	entityTexture->setDst(currentPos); //update thang khi goi ham move
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << "goc trong ham render: " << 90 * facing << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
 	entityTexture->render(renderer, 90.0f * (double) facing);
 	SDL_Delay(20);
 	tick();
@@ -54,7 +41,6 @@ void Entity::renderToStartPosition(SDL_Renderer* renderer) {
 	entityTexture->setSrc(clips[currentFrames / totalFrames]); // clips nay lay dau ra ??? -> cho vao hay gi
 	entityTexture->setDst(startPos); //update thang khi goi ham move
 	entityTexture->render(renderer, 90.0f * (double) facing);
-	SDL_Delay(20);
 	tick();
 }
 
@@ -136,19 +122,15 @@ void Entity::checkCollisionWithWalls(int container_x, int container_y) {
 	}
 	if (row > 0 && board[row - 1][col] == WALL) {
 		turnAllows[DIRECTION_UP] = false;
-		std::cout << "len" << std::endl;
 	}
 	if (row < TOTAL_BLOCK_Y - 1 && board[row + 1][col] == WALL) {
 		turnAllows[DIRECTION_DOWN] = false;
-		std::cout << "xuong" << std::endl;
 	}
 	if (col > 0 && board[row][col - 1] == WALL) {
 		turnAllows[DIRECTION_LEFT] = false;
-		std::cout << "trai" << std::endl;
 	}
 	if (col < TOTAL_BLOCK_X - 1 && board[row][col + 1] == WALL) {
 		turnAllows[DIRECTION_RIGHT] = false;
-		std::cout << "phai" << std::endl;
 	}
 }
 
