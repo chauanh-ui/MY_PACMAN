@@ -121,8 +121,8 @@ void Entity::resetTurnAllows() {
 
 
 void Entity::checkCollisionWithWalls(int container_x, int container_y) {
-	int center_x = container_x + BLOCKSIZE16;
-	int center_y = container_y + BLOCKSIZE16;
+	int center_x = container_x - OFFSET_X + BLOCKSIZE16;
+	int center_y = container_y - OFFSET_Y + BLOCKSIZE16;
 	int row = center_y / BLOCKSIZE16;
 	int col = center_x / BLOCKSIZE16;
 	if (col == 0) {

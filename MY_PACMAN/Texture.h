@@ -19,10 +19,10 @@ public:
 		texture = loadImage(imagePath, renderer);
 	}*/
 
-	void setDst(SDL_Rect _dst) {
+	void setDst(const SDL_Rect& _dst) {
 		dst = _dst;
 	}
-	void setSrc(SDL_Rect _src) {
+	void setSrc(const SDL_Rect& _src) {
 		src = _src;
 	}
 	void setAngle(double _angle) {

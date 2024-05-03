@@ -59,6 +59,7 @@ void Pacman::move(SDL_Event& e) {
 		}
 		setFacing(DIRECTION_RIGHT);
 	}
+	eat(currentPos.x, currentPos.y);
 	std::cout << "goc trong ham move: " << 90.0f * facing << std::endl;
 	std::cout << std::endl;
 	std::cout << std::endl;
@@ -74,8 +75,20 @@ void Pacman::move(SDL_Event& e) {
 	std::cout << std::endl;
 	
 }
-void Pacman::eat() {
-	
+void Pacman::eat(int x, int y) {
+	int center_x = x - OFFSET_X + BLOCKSIZE16;
+	int center_y = y - OFFSET_Y + BLOCKSIZE16;
+	int row = center_y / BLOCKSIZE16;
+	int col = center_x / BLOCKSIZE16;
+	if (board[row][col] == PELLET) {
+		board[row][col] = NOTHING;
+
+	}
 }
+Pacman::~Pacman()
+{
+	;
+}
+
 
 

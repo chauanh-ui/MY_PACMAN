@@ -14,20 +14,18 @@ const int TOTAL_BLOCK_X = 28;
 const int TOTAL_BLOCK_Y = 36;
 const int TOTAL_BLOCK = TOTAL_BLOCK_X * TOTAL_BLOCK_Y;
 
-const int OFFSET_Y_TOP = 0;
-const int OFFSET_Y_BOTTOM = 0;
+const int OFFSET_X = 10 * BLOCKSIZE16;
+const int OFFSET_Y = BLOCKSIZE16;
 // window const
-const int WINDOW_WIDTH = BLOCKSIZE16 * TOTAL_BLOCK_X;
-const int WINDOW_HEIGHT = BLOCKSIZE16 * TOTAL_BLOCK_Y;
+const int WINDOW_WIDTH = OFFSET_X + BLOCKSIZE16 * TOTAL_BLOCK_X + OFFSET_X;
+const int WINDOW_HEIGHT = OFFSET_Y + BLOCKSIZE16 * TOTAL_BLOCK_Y + OFFSET_Y;
 const std::string WINDOW_TITLE = "PACMAN GAME";
 
 // map image const
 #define IMAGE_MAP_PATH "Images//Map24.png"
-const int IMAGE_MAP_WIDTH = 672; // 28 * 24
-const int IMAGE_MAP_HEIGHT = 888; // 37 * 24
+
 const SDL_Rect IMAGE_MAP_SRC = { 0, 0, 28 * 24, 36 * 24 }; // lấy full map
-const SDL_Rect IMAGE_MAP_DST = { 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT};
-const std::string MAP_FILE_TXT = "Images//Map.txt";
+const SDL_Rect IMAGE_MAP_DST = { OFFSET_X, OFFSET_Y, BLOCKSIZE16 * TOTAL_BLOCK_X ,  BLOCKSIZE16 * TOTAL_BLOCK_Y };
 
 const std::string charMap = // map dạng char
 "                            " 
@@ -129,8 +127,13 @@ const int FRUIT_FRAMES = 8;
 //Pacman
 const std::string PACMAN_IMAGE_PATH = "Images//PacMan32.png";
 const SDL_Rect PACMAN_IMAGE_SRC = { 0, 0, 32, 32 };
-const SDL_Rect PACMAN_START_POS = {13 * BLOCKSIZE16 + BLOCKSIZE16 / 2, 19 * BLOCKSIZE16 + BLOCKSIZE16 / 2,
+const SDL_Rect PACMAN_START_POS = {OFFSET_X + 13 * BLOCKSIZE16 + BLOCKSIZE16 / 2, OFFSET_Y + 19 * BLOCKSIZE16 + BLOCKSIZE16 / 2,
 2 * BLOCKSIZE16, 2 * BLOCKSIZE16};
+
+
+const std::string DOT_IMAGE_PATH = "Images//Pellet24.png";
+const SDL_Rect DOT_IMAGE_SRC = { 0,0,24,24 };
+
 
 const std::vector<SDL_Rect> PACMAN_HORIZONTAL_CLIPS = {
 	{0,0,32,32},
@@ -151,6 +154,7 @@ const std::string PACMAN_RIGHT_PATH = "Images//Pacman32.png";
 enum class GameState {
 	Intro,
 	Play,
+	PlayExtra,
 	Quit
 };
 

@@ -10,6 +10,10 @@ void GameObject::initialize() {
 	map->setColor(BLUE);
 	map->setSrc(IMAGE_MAP_SRC);
 	map->setDst(IMAGE_MAP_DST);
+
+	smallDot = new Texture(DOT_IMAGE_PATH, gRenderer);
+	smallDot->setSrc(DOT_IMAGE_SRC);
+
 	std::cout << "Cbi khoi tao pacman";
 	simplePacman = new Pacman(gRenderer);
 }
@@ -18,6 +22,23 @@ void GameObject::renderGame() {
 	//SDL_SetRenderDrawColor()
 	SDL_RenderClear(gRenderer);
 	map->render(gRenderer);
+	std::cout << "WWWWWWWWWWWWWWWWWWWWWWWWW\n";
+	for (int i = 0; i < TOTAL_BLOCK_Y; i++) {
+		for (int j = 0; j < TOTAL_BLOCK_X; j++) {
+			
+			if (board[i][j] == PELLET) {
+				std::cout << "HHHHHHHHHHHHHHH\n";
+				SDL_Rect dst;
+				dst.x = j * BLOCKSIZE16 + OFFSET_X + 4;
+				dst.y = i * BLOCKSIZE16 + OFFSET_Y + 4;
+				dst.w = 8;
+				dst.h = 8;
+				smallDot->setDst(dst);
+				smallDot->render(gRenderer);
+			}
+			
+		}
+	}
 	simplePacman->renderEntity(gRenderer);
 	SDL_RenderPresent(gRenderer);
 }

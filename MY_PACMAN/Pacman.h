@@ -14,7 +14,7 @@ private:
 public:
 	Pacman(SDL_Renderer* renderer);
 	~Pacman();
-	void eat();
+	void eat(int x, int y);
 	void move(SDL_Event& e);
 	void checkCollisionWithGhost();
 };
