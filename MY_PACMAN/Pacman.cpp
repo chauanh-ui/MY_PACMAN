@@ -15,11 +15,6 @@ void Pacman::move(SDL_Event& e) {
 
 	resetTurnAllows();
 	checkCollisionWithWalls(currentPos.x, currentPos.y);
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
 	if (e.key.keysym.sym == SDLK_UP) {
 		currentPos.y -= speed;
 		
@@ -52,9 +47,6 @@ void Pacman::move(SDL_Event& e) {
 	}
 	eat(currentPos.x, currentPos.y);
 	if (isEnergize) {
-		std::cout << "EEEEEEEEEEEEEEEEEEEEEEEEEEEEE\n";
-		std::cout << "Energized start time: " << energizedStartTime << std::endl;
-
 		startEnergizedTime();
 		if (energizedStartTime == ENERGIZED_DURATION) {
 			resetEnergizedStatus();
@@ -76,8 +68,6 @@ void Pacman::eat(int x, int y) {
 		board[row][col] = NOTHING;
 		score += ENERGIZER_SCORE;
 		isEnergize = true;
-		std::cout << "SSSSSSSSSSSSSSSSSSSSSSSSSSSS\n";
-		std::cout << "Score: " << score;
 	}
 }
 Pacman::~Pacman()

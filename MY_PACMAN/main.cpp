@@ -10,4 +10,5 @@ int main(int argc, char* argv[]) {
 	std::cout << "SUCCESS!\n";
 	delete game;
 	return 0;
+
 }

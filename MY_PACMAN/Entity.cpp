@@ -18,7 +18,6 @@ void Entity::initFrames() {
 
 void Entity::tick() {
 	currentFrames = currentFrames + 1;
-	std::cout << totalFrames << std::endl;
 	if (currentFrames / totalFrames >= totalFrames) {
 		currentFrames = 0;
 	}

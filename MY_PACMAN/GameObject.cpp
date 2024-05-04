@@ -3,7 +3,7 @@
 #include"GameObject.h"
 #include "Entity.h"
 void GameObject::initialize() {
-	gameState = GameState::Play;
+	gameState = GameState::Intro;
 	std::cout << "initialize GameObject\n";
 	initSDL(gWindow, gRenderer);
 	map = new Texture(IMAGE_MAP_PATH, gRenderer);
@@ -11,6 +11,7 @@ void GameObject::initialize() {
 	map->setSrc(IMAGE_MAP_SRC);
 	map->setDst(IMAGE_MAP_DST);
 
+	menu = new Menu(gRenderer);
 	smallDot = new Texture(SMALL_DOT_IMAGE_PATH, gRenderer);
 	testDot = new Texture(BIG_DOT_IMAGE_PATH, gRenderer);
 	bigDot = new Texture(BIG_DOT_IMAGE_PATH, gRenderer);
@@ -25,6 +26,7 @@ void GameObject::initialize() {
 void GameObject::renderGame() {
 	//SDL_SetRenderDrawColor()
 	SDL_RenderClear(gRenderer);
+	//menu->render(gameState, gRenderer);
 	map->render(gRenderer);
 	for (int i = 0; i < TOTAL_BLOCK_Y; i++) {
 		for (int j = 0; j < TOTAL_BLOCK_X; j++) {
@@ -66,6 +68,7 @@ void GameObject::renderGame() {
 }
 
 GameObject::~GameObject() {
+	delete menu;
 	delete map;
 	delete smallDot;
 	delete bigDot;
@@ -81,9 +84,9 @@ GameObject::~GameObject() {
 	SDL_Quit();
 }
 
-void GameObject::running() {
+void GameObject::play() {
 	//Uint32 preTimeRender = SDL_GetTicks();
-	while (gameState != GameState::Quit) {
+	while (gameState == GameState::Play) {
 		while (SDL_PollEvent(&e) != 0) {
 			if (e.type == SDL_QUIT) {
 				gameState = GameState::Quit;
@@ -99,5 +102,55 @@ void GameObject::running() {
 		}
 		//std::cout << "chuan bi render game\n";
 		renderGame();
+	}
+}
+
+void GameObject::running() {
+	while (gameState != GameState::Quit) {
+		introGame();
+		play();
+		//gameOver();
+	}
+}
+
+void GameObject::introGame() {
+	while (gameState == GameState::Intro) {
+		while (SDL_PollEvent(&e) != 0) {
+			if (e.type == SDL_QUIT) {
+				gameState = GameState::Quit;
+				break;
+			}
+			else if (e.type == SDL_MOUSEMOTION) {
+				int mouseX, mouseY;
+				SDL_GetMouseState(&mouseX, &mouseY);
+				std::cout << "Mouse x: " << mouseX << " MouseY: " << mouseY << std::endl;
+				if (mouseX > 252 && mouseX < 505 && mouseY > 459 && mouseY < 490) {
+					menu->setIsInsidePlayButton(true);
+				} else {	
+					menu->setIsInsidePlayButton(false);
+				}
+				if (mouseX > 308 && mouseX < 441 && mouseY > 508 && mouseY < 529) {
+					menu->setIsInsidePlayExtraButton(true);
+				} else {
+					menu->setIsInsidePlayExtraButton(false);
+				}
+			}
+			else if (e.type == SDL_MOUSEBUTTONDOWN) {
+				int mouseX, mouseY;
+				SDL_GetMouseState(&mouseX, &mouseY);
+				std::cout << "Mouse x: " << mouseX << " MouseY: " << mouseY << std::endl;
+				if (mouseX > 252 && mouseX < 505 && mouseY > 459 && mouseY < 490) {
+					gameState = GameState::Play;
+				}
+				if (mouseX > 300 && mouseX < 451 && mouseY > 501 && mouseY < 532) {
+					gameState = GameState::Play; // PlayExtra
+				}
+			}
+			else {
+				;
+			}
+		}
+		//renderGame();
+		menu->render(gameState, gRenderer);
 	}
 }

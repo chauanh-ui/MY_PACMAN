@@ -133,8 +133,12 @@ const SDL_Rect INKY_START_POS = { OFFSET_X + 13 * BLOCKSIZE16, OFFSET_Y + 17 * B
 const SDL_Rect BLINKY_START_POS = {};
 const SDL_Rect CLYDE_START_POS = {};
 const SDL_Rect PINKY_START_POS = {};
+const SDL_Rect PLAY_BUTTON_POS = { 230, 420, 314, 82 };
+const SDL_Rect PLAY_EXTRA_BUTTON_POS = { 286, 493 , 196, 51 };
 
-
+const std::string IMAGE_INTRO_PATH = "Images//Menu_intro.png";
+const std::string PLAY_BUTTON_IMAGE_PATH = "Images//playGame1.png";
+const std::string PLAY_EXTRA_BUTTON_IMAGE_PATH = "Images//playExtraButton.png";
 
 
 
