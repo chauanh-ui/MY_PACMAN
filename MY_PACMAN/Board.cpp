@@ -117,7 +117,8 @@ void Board::Draw(unsigned char ActualMap[], Timer MapAnimationTimer) {
 	MapTexture.render();
 	for (unsigned char i = 0; i < Lives; i++) {
 		//LivesTexture.render(i * BlockSize32, 26 * BlockSize32 - BlockSize32 / 4);
-		LivesTexture.render(i * BlockSize32, WindowHeight - BlockSize32);
+		LivesTexture.render(i * BlockSize32, WindowHeight - 4 * BlockSize32);
+		//std::cout << "WTF why dont render lives\n";
 	}
 	if (!MapAnimationTimer.isStarted()) {
 		//DoorTexture.render(WindowWidth / 2 - 23, WindowHeight / 2 - 45);

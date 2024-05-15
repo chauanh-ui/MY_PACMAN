@@ -1,48 +1,14 @@
-
-//#include"GameObject.h"
-//
-//int main(int argc, char* argv[]) {
-//	GameObject* game = new GameObject;
-//	game->initialize();
-//	game->running();
-//	//game->renderGame();
-//	waitUntilKeyPressed();
-//	std::cout << "SUCCESS!\n";
-//	delete game;
-//	return 0;
-//}
-#pragma once
-//#include "Common.h"
-//#include "Globals.h"
-//#include "Texture.h"
-//#include "Timer.h"
-//#include "Position.h"
-//#include "Entity.h"
-//#include "Pac.h"
-//#include "Ghost.h"
-//#include "Blinky.h"
-//#include "Inky.h"
-//#include "Pinky.h"
-//#include "Clyde.h"
-//#include "Fruit.h"
-//#include "Board.h"
-//#include "Sound.h"
-//#include "Game.h"
 #include "GameController.h"
-int main(int argc, char* args[]) {
 
-	/*InitializeSDL();
+//void GameController::initialize() {
+//	InitializeSDL();
+//
+//}
 
-	Game mGame;
-	Timer GameTimer;
-	SDL_Event event;
-	bool quit = false;
-	unsigned short StartTicks = 4500;
-	std::vector<unsigned char> mover;
+void GameController::running() {
 	mover.push_back(Right);
 	GameTimer.Start();
 	mGame.mSound.PlayIntro();
-
 	while (!quit) {
 
 		double IterationStart = SDL_GetPerformanceCounter();
@@ -66,23 +32,13 @@ int main(int argc, char* args[]) {
 			mGame.Draw();
 			SDL_RenderPresent(renderer);
 		}
-
 		double IterationEnd = SDL_GetPerformanceCounter();
 		double ElapsedSeconds = (IterationEnd - IterationStart) / (double)SDL_GetPerformanceFrequency();
 		double Delay = 16.666f - (ElapsedSeconds * 1000.0f);
 		if (Delay > 0)
 			SDL_Delay(std::max(0, (int)Delay));
-
 	}
-
-	CloseSDL();
-
-	return 0;*/
-	InitializeSDL();
-	GameController* gameController = new GameController();
-	//gameController->initialize();
-	gameController->running();
-	//gameController->close();
-	CloseSDL();
-	return 0;
 }
+//void GameController::close() {
+//	CloseSDL();
+//}

@@ -28,8 +28,11 @@ public:
 	void Update(std::vector<unsigned char>& mover);
 	unsigned short GetLevel();
 	void IncreaseLevel();
+
 	void UpdateDifficulty();
+
 	bool IsLevelCompleted();
+
 	void ClearMover(std::vector<unsigned char>& mover);
 	void DeadlyPacGhostColl();
 	void DeadlyGhostPacColl(Ghost& mGhost);

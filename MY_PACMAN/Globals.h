@@ -85,6 +85,16 @@ enum EntityType {
 	ePacMan, eBlinky, eInky, ePinky, eClyde, Noone
 };
 
+//enum class GameState {
+//	Intro,
+//	Setting,
+//	Play, // setting chinh am thanh
+//	ChooseMap,
+//	ChooseChar,
+//	PlayExtra,
+//	Quit
+//};
+
 void InitializeSDL();
 void CloseSDL();
 

@@ -24,7 +24,6 @@
 //
 //
 //
-//
 //void Texture::setColor(SDL_Color color) {
 //	SDL_SetTextureColorMod(texture, color.r, color.g, color.b);
 //}
