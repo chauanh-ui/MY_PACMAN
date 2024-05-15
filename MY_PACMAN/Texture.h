@@ -45,7 +45,7 @@ class LTexture{
 		void setColor(uint8_t red, uint8_t green, uint8_t blue);
 		void setBlendMode(SDL_BlendMode blending);
 		void setAlpha(uint8_t alpha);
-		void render(short x = OffsetX, short y = OffsetY, unsigned char facing = 0, SDL_Rect* clip = NULL);
+		void render(short x = 0, short y = 0, unsigned char facing = 0, SDL_Rect* clip = NULL);
 		int getWidth();
 		int getHeight();
 	private:

@@ -124,7 +124,7 @@ void LTexture::setAlpha(uint8_t alpha) {
 
 void LTexture::render(short x, short y, unsigned char facing, SDL_Rect* clip) {
 	//Set rendering space and render to screen
-	SDL_Rect renderQuad = { x, y, mWidth, mHeight };
+	SDL_Rect renderQuad = { x + OffsetX, y + OffsetY, mWidth, mHeight };
 
 	//Set clip rendering dimensions
 	if (clip != NULL) {
