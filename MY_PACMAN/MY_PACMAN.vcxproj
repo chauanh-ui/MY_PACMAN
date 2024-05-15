@@ -181,6 +181,7 @@
     <ClInclude Include="Inky.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="MenuButton.h" />
     <ClInclude Include="MenuState.h" />
     <ClInclude Include="Pac.h" />
     <ClInclude Include="Pacman.h" />

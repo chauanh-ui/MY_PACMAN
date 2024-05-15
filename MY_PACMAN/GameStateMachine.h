@@ -13,6 +13,10 @@ public:
 
 	// will remove whichever state is currently being used without adding another
 	void popState();
+
+	void update(); // call update function of each state
+
+	void render(); // call render function of each state
 private:
 	std::vector<GameState*> m_gameStates;
 };

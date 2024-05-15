@@ -3,6 +3,7 @@
 #include <iostream>
 
 Board::Board() {
+	// if (!isPlayExtra)
 	MapTexture.loadFromFile("Textures/Map16.png");
 	PelletTexture.loadFromFile("Textures/Pellet24.png");
 	EnergizerTexture.loadFromFile("Textures/Energizer24.png");
@@ -18,6 +19,7 @@ Board::Board() {
 }
 
 Board::~Board() {
+	// if (!isPlayExtra)
 	MapTexture.free();
 	PelletTexture.free();
 	EnergizerTexture.free();
@@ -29,7 +31,16 @@ Board::~Board() {
 	HighScoreTexture.free();
 }
 
+//void Board::UpdateCharBoard() {
+// int rand = srand(0) % 4;
+// std::string path = "Resources//" + to_string(rand) + ".txt";
+// loadBoard(path); // vong for
+// }
+
 void Board::ConvertSketch() {
+	// update charboard trc khi ham nay goi 
+	// goi ham update charboard
+	// dua vao bien toan cuc isPlayExtra 
 	for (unsigned short i = 0; i < BoardHeight * BoardWidth; i++) {
 		switch (CharBoard[i]) {
 		case '#':
@@ -114,6 +125,8 @@ void Board::Draw(unsigned char ActualMap[], Timer MapAnimationTimer) {
 	ScoreTexture.render(0, BlockSize32 - 5);
 	HighScoreWordTexture.render(236);
 	HighScoreTexture.render(236, BlockSize24 + 5);
+	// Dua vao bien isPlayExtra de render lai Map Texture
+	// Tao 1 ham rieng mapRender()
 	MapTexture.render();
 	for (unsigned char i = 0; i < Lives; i++) {
 		//LivesTexture.render(i * BlockSize32, 26 * BlockSize32 - BlockSize32 / 4);
@@ -134,6 +147,7 @@ void Board::Draw(unsigned char ActualMap[], Timer MapAnimationTimer) {
 		}
 	}
 	else {
+		// If (!isPlayExtra)
 		if ((MapAnimationTimer.GetTicks() / 250) % 2 == 1)
 			MapTexture.setColor(255, 255, 255);
 		else

@@ -1,5 +1,21 @@
 #pragma once
 #include<string>
+#include "Common.h"
+#include "Globals.h"
+#include "Texture.h"
+#include "Timer.h"
+#include "Position.h"
+#include "Entity.h"
+#include "Pac.h"
+#include "Ghost.h"
+#include "Blinky.h"
+#include "Inky.h"
+#include "Pinky.h"
+#include "Clyde.h"
+#include "Fruit.h"
+#include "Board.h"
+#include "Sound.h"
+#include "Game.h"
 class GameState
 {
 public:

@@ -1,7 +1,9 @@
 #include "Pac.h"
 
 Pac::Pac() :Entity(EntityType::ePacMan) {
+	// if (pacType == 0) (==1, ==2)
 	LivingPac.loadFromFile("Textures/PacMan32.png");
+	// if (pacType == 0)
 	DeathPac.loadFromFile("Textures/GameOver32.png");
 	InitFrames(LivingPacFrames, LivingPacSpriteClips);
 	InitFrames(DeathPacFrames, DeathPacSpriteClips);

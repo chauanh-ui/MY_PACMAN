@@ -3,6 +3,8 @@
 Game::Game() {
 	Ready.loadFromRenderedText("ready!", Yellow);
 	GameOverTexture.loadFromRenderedText("game  over", Red);
+
+	// maybe doan nay se modify cai char string
 	mBoard.CopyBoard(ActualMap);
 	IsGameStarted = false;
 	ScatterTime = 7000;

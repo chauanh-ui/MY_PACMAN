@@ -2,22 +2,22 @@
 #ifndef GAME_CONTROLLER_H
 #define GAME_CONTROLLER_H
 #include "GameStateMachine.h"
-#include "Common.h"
-#include "Globals.h"
-#include "Texture.h"
-#include "Timer.h"
-#include "Position.h"
-#include "Entity.h"
-#include "Pac.h"
-#include "Ghost.h"
-#include "Blinky.h"
-#include "Inky.h"
-#include "Pinky.h"
-#include "Clyde.h"
-#include "Fruit.h"
-#include "Board.h"
-#include "Sound.h"
-#include "Game.h"
+//#include "Common.h"
+//#include "Globals.h"
+//#include "Texture.h"
+//#include "Timer.h"
+//#include "Position.h"
+//#include "Entity.h"
+//#include "Pac.h"
+//#include "Ghost.h"
+//#include "Blinky.h"
+//#include "Inky.h"
+//#include "Pinky.h"
+//#include "Clyde.h"
+//#include "Fruit.h"
+//#include "Board.h"
+//#include "Sound.h"
+//#include "Game.h"
 ////
 ////#include "Common.h"
 ////#include "Defs.h"
@@ -63,16 +63,24 @@
 //};
 	//GameStateMachine* m_pGameStateMachine;
 class GameController {
-	Game mGame;
+	GameStateMachine* m_pGameStateMachine;
+	/*Game mGame;
 	Timer GameTimer;
 	SDL_Event event;
 	bool quit = false;
 	unsigned short StartTicks = 4500;
-	std::vector<unsigned char> mover;
+	std::vector<unsigned char> mover;*/
+
 public:
+
 	//void initialize();
 	//void handleInput();
-	void running();
+	void init();
+	void handleEvents();
+	void update(); // {m_pGameStateMachine->update()}
+	void render(); // {sdl_renderclear  m_pGameStateMachine->render()  sdl_rendererpresent}
+	void running(); 
+
 	//void close();
 };
 

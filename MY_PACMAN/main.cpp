@@ -80,9 +80,16 @@ int main(int argc, char* args[]) {
 	return 0;*/
 	InitializeSDL();
 	GameController* gameController = new GameController();
-	//gameController->initialize();
+
 	gameController->running();
-	//gameController->close();
+
+
+	//gameController->init(); 
+	//gameController->update();
+	//gameController->render();
+
+
+
 	CloseSDL();
 	return 0;
 }

@@ -1,12 +1,21 @@
 #include "GameController.h"
+#include "MenuState.h"
+#include "PlayState.h"
+
 
 //void GameController::initialize() {
 //	InitializeSDL();
 //
 //}
 
+void GameController::init() {
+	m_pGameStateMachine = new GameStateMachine();
+	//m_pGameStateMachine->changeState(new MenuState());
+	m_pGameStateMachine->changeState(new PlayState());
+}
+
 void GameController::running() {
-	mover.push_back(Right);
+	/*mover.push_back(Right);
 	GameTimer.Start();
 	mGame.mSound.PlayIntro();
 	while (!quit) {
@@ -37,8 +46,27 @@ void GameController::running() {
 		double Delay = 16.666f - (ElapsedSeconds * 1000.0f);
 		if (Delay > 0)
 			SDL_Delay(std::max(0, (int)Delay));
-	}
+	}*/
 }
+
+void GameController::handleEvents() {
+	//if (event.type == SDL_KEYDOWN &&  event.key.keysym.sym)
+}
+
+
+void GameController::update()
+{
+	m_pGameStateMachine->update();
+}
+
+
+void GameController::render()
+{
+	SDL_RenderClear(renderer);
+	m_pGameStateMachine->render();
+	SDL_RenderPresent(renderer);
+}
+
 //void GameController::close() {
 //	CloseSDL();
 //}
