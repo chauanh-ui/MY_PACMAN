@@ -8,9 +8,10 @@ const unsigned char BoardHeight = 36;
 const unsigned char BlockSize32 = 32;
 //const unsigned char BlockSize24 = 24;
 const unsigned char BlockSize24 = 16;
-
-const unsigned short WindowWidth = BoardWidth * BlockSize24;
-const unsigned short WindowHeight = BoardHeight * BlockSize24;
+const unsigned short OffsetX = 0;
+const unsigned short OffsetY = 0;
+const unsigned short WindowWidth = BoardWidth * BlockSize24 + OffsetX;
+const unsigned short WindowHeight = BoardHeight * BlockSize24 + OffsetY;
 
 const std::string CharBoard =
 "                            "
