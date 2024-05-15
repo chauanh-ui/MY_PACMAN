@@ -1,11 +1,12 @@
 #include "Board.h"
 #include "Globals.h"
+#include <iostream>
 
 Board::Board() {
 	MapTexture.loadFromFile("Textures/Map16.png");
 	PelletTexture.loadFromFile("Textures/Pellet24.png");
 	EnergizerTexture.loadFromFile("Textures/Energizer24.png");
-	DoorTexture.loadFromFile("Textures/Door.png");
+	DoorTexture.loadFromFile("Textures/Door16.png");
 	LivesTexture.loadFromFile("Textures/Lives32.png");
 	ScoreWordTexture.loadFromRenderedText("Score", White);
 	HighScoreWordTexture.loadFromRenderedText("High Score", White);
@@ -91,12 +92,14 @@ void Board::SetScore() {
 }
 
 void Board::SetHighScore() {
+	std::cout << "Call setHighScore function\n";
 	unsigned int High;
 	std::ifstream HighScores("HighScore.txt");
 	HighScores >> High;
 	std::stringstream ss;
 	if (Score > High) {
 		ss << Score;
+		std::cout << "High score: " << Score << std::endl;
 		std::ofstream HighScores("HighScore.txt");
 		HighScores << ss.str();
 	}
@@ -109,14 +112,14 @@ void Board::SetHighScore() {
 void Board::Draw(unsigned char ActualMap[], Timer MapAnimationTimer) {
 	ScoreWordTexture.render();
 	ScoreTexture.render(0, BlockSize32 - 5);
-	HighScoreWordTexture.render(336);
-	HighScoreTexture.render(336, BlockSize32);
+	HighScoreWordTexture.render(236);
+	HighScoreTexture.render(236, BlockSize24 + 5);
 	MapTexture.render();
 	for (unsigned char i = 1; i <= Lives; i++) {
 		LivesTexture.render(i * BlockSize32, 26 * BlockSize32 - BlockSize32 / 4);
 	}
 	if (!MapAnimationTimer.isStarted()) {
-		DoorTexture.render(WindowWidth / 2 - 23, WindowHeight / 2 - 57);
+		DoorTexture.render(WindowWidth / 2 - 23, WindowHeight / 2 - 45);
 		char y = -1;
 		for (unsigned short i = 0; i < BoardHeight * BoardWidth; i++) {
 			unsigned char x = i % BoardWidth;

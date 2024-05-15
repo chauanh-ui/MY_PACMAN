@@ -8,6 +8,7 @@ const unsigned char BoardHeight = 36;
 const unsigned char BlockSize32 = 32;
 //const unsigned char BlockSize24 = 24;
 const unsigned char BlockSize24 = 16;
+
 const unsigned short WindowWidth = BoardWidth * BlockSize24;
 const unsigned short WindowHeight = BoardHeight * BlockSize24;
 

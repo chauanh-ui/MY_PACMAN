@@ -24,6 +24,7 @@ public:
 	void UpdatePositions(std::vector<unsigned char>& mover, bool TimedStatus);
 	void Food();
 	void EntityCollisions();
+
 	void Update(std::vector<unsigned char>& mover);
 	unsigned short GetLevel();
 	void IncreaseLevel();
@@ -35,7 +36,9 @@ public:
 	void ModToWaka(bool NewWaka);
 	void DeathSound();
 	void ModDeathSoundStatement(bool NewDeathSoundStatement);
+
 	void DrawLittleScore();
+
 	bool Process(Timer& GameTimer, std::vector<unsigned char>& mover, unsigned short& StartTicks);
 	void Draw();
 	Sound mSound;
