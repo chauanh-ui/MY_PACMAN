@@ -2,7 +2,7 @@
 #include "Globals.h"
 
 Board::Board() {
-	MapTexture.loadFromFile("Textures/Map24.png");
+	MapTexture.loadFromFile("Textures/Map16.png");
 	PelletTexture.loadFromFile("Textures/Pellet24.png");
 	EnergizerTexture.loadFromFile("Textures/Energizer24.png");
 	DoorTexture.loadFromFile("Textures/Door.png");
@@ -108,7 +108,7 @@ void Board::SetHighScore() {
 
 void Board::Draw(unsigned char ActualMap[], Timer MapAnimationTimer) {
 	ScoreWordTexture.render();
-	ScoreTexture.render(0, BlockSize32);
+	ScoreTexture.render(0, BlockSize32 - 5);
 	HighScoreWordTexture.render(336);
 	HighScoreTexture.render(336, BlockSize32);
 	MapTexture.render();
