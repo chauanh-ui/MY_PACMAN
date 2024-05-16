@@ -64,12 +64,15 @@
 	//GameStateMachine* m_pGameStateMachine;
 class GameController {
 	GameStateMachine* m_pGameStateMachine;
+	SDL_Event g_event;
 	/*Game mGame;
 	Timer GameTimer;
 	SDL_Event event;
 	bool quit = false;
 	unsigned short StartTicks = 4500;
 	std::vector<unsigned char> mover;*/
+	double IterationStart;
+	bool quit;
 
 public:
 
@@ -80,6 +83,7 @@ public:
 	void update(); // {m_pGameStateMachine->update()}
 	void render(); // {sdl_renderclear  m_pGameStateMachine->render()  sdl_rendererpresent}
 	void running(); 
+	void gameDelay();
 
 	//void close();
 };

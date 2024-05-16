@@ -16,6 +16,8 @@ public:
 
 	void update(); // call update function of each state
 
+	void handleEvent(SDL_Event& event);
+
 	void render(); // call render function of each state
 private:
 	std::vector<GameState*> m_gameStates;

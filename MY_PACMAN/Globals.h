@@ -72,7 +72,7 @@ extern SDL_Renderer* renderer;
 extern SDL_Rect* CurrentClip;
 extern TTF_Font* Font;
 extern TTF_Font* LittleFont;
-extern SDL_Event event;
+//extern SDL_Event event;
 enum BlockType {
 	Wall, Door, Pellet, Energizer, Nothing
 };

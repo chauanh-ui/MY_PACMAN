@@ -80,7 +80,7 @@ int main(int argc, char* args[]) {
 	return 0;*/
 	InitializeSDL();
 	GameController* gameController = new GameController();
-
+	gameController->init();
 	gameController->running();
 
 

@@ -12,6 +12,7 @@ void GameController::init() {
 	m_pGameStateMachine = new GameStateMachine();
 	//m_pGameStateMachine->changeState(new MenuState());
 	m_pGameStateMachine->changeState(new PlayState());
+	quit = false;
 }
 
 void GameController::running() {
@@ -47,10 +48,24 @@ void GameController::running() {
 		if (Delay > 0)
 			SDL_Delay(std::max(0, (int)Delay));
 	}*/
+	while (!quit) {
+		IterationStart = SDL_GetPerformanceCounter();
+		while (SDL_PollEvent(&g_event) != 0) {
+			if (g_event.type == SDL_QUIT) {
+				quit = true;
+				//close();
+			}	
+			handleEvents();
+		}
+		update();
+		render();
+		gameDelay();
+	}
 }
 
 void GameController::handleEvents() {
 	//if (event.type == SDL_KEYDOWN &&  event.key.keysym.sym)
+	m_pGameStateMachine->handleEvent(g_event);
 }
 
 
@@ -59,6 +74,13 @@ void GameController::update()
 	m_pGameStateMachine->update();
 }
 
+void GameController::gameDelay() {
+	double IterationEnd = SDL_GetPerformanceCounter();
+	double ElapsedSeconds = (IterationEnd - IterationStart) / (double)SDL_GetPerformanceFrequency();
+	double Delay = 16.666f - (ElapsedSeconds * 1000.0f);
+	if (Delay > 0)
+		SDL_Delay(std::max(0, (int)Delay));
+}
 
 void GameController::render()
 {
@@ -68,5 +90,5 @@ void GameController::render()
 }
 
 //void GameController::close() {
-//	CloseSDL();
+//	m_pGameStateMachine->on
 //}
