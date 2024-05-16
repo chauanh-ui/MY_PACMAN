@@ -63,7 +63,7 @@
 //};
 	//GameStateMachine* m_pGameStateMachine;
 class GameController {
-	GameStateMachine* m_pGameStateMachine;
+	static GameStateMachine* m_pGameStateMachine;
 	SDL_Event g_event;
 	/*Game mGame;
 	Timer GameTimer;
@@ -78,6 +78,9 @@ public:
 
 	//void initialize();
 	//void handleInput();
+	~GameController();
+
+	static GameStateMachine* getStateMachine();
 	void init();
 	void handleEvents();
 	void update(); // {m_pGameStateMachine->update()}

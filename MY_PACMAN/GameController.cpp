@@ -1,17 +1,19 @@
 #include "GameController.h"
 #include "MenuState.h"
 #include "PlayState.h"
+#include <iostream>
 
 
 //void GameController::initialize() {
 //	InitializeSDL();
 //
 //}
-
+GameStateMachine* GameController::m_pGameStateMachine = new GameStateMachine();
 void GameController::init() {
-	m_pGameStateMachine = new GameStateMachine();
+	//m_pGameStateMachine = new GameStateMachine();
 	//m_pGameStateMachine->changeState(new MenuState());
-	m_pGameStateMachine->changeState(new PlayState());
+	std::cout << "init\n";
+	m_pGameStateMachine->changeState(new MenuState());
 	quit = false;
 }
 
@@ -48,6 +50,7 @@ void GameController::running() {
 		if (Delay > 0)
 			SDL_Delay(std::max(0, (int)Delay));
 	}*/
+	std::cout << "Game controller running\n";
 	while (!quit) {
 		IterationStart = SDL_GetPerformanceCounter();
 		while (SDL_PollEvent(&g_event) != 0) {
@@ -65,16 +68,19 @@ void GameController::running() {
 
 void GameController::handleEvents() {
 	//if (event.type == SDL_KEYDOWN &&  event.key.keysym.sym)
+	std::cout << "Game controller handle event\n";
 	m_pGameStateMachine->handleEvent(g_event);
 }
 
 
 void GameController::update()
 {
+	std::cout << "Game controller update\n";
 	m_pGameStateMachine->update();
 }
 
 void GameController::gameDelay() {
+	std::cout << "Co delay k vay\n";
 	double IterationEnd = SDL_GetPerformanceCounter();
 	double ElapsedSeconds = (IterationEnd - IterationStart) / (double)SDL_GetPerformanceFrequency();
 	double Delay = 16.666f - (ElapsedSeconds * 1000.0f);
@@ -92,3 +98,11 @@ void GameController::render()
 //void GameController::close() {
 //	m_pGameStateMachine->on
 //}
+
+GameController::~GameController() {
+	delete m_pGameStateMachine;
+}
+
+GameStateMachine* GameController::getStateMachine() { 
+	return m_pGameStateMachine; 
+}

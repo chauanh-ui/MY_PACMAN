@@ -1,7 +1,10 @@
 
 #include "Game.h"
+#include <iostream>
 Game::Game() {
 	Ready.loadFromRenderedText("ready!", Yellow);
+
+
 	GameOverTexture.loadFromRenderedText("game  over", Red);
 
 	// maybe doan nay se modify cai char string
@@ -57,7 +60,7 @@ void Game::Start() {
 		IsGameStarted = true;
 		GhostTimer.Start();
 	}
-	Ready.render(11 * BlockSize24, 20 * BlockSize24 - 5);
+	//Ready.render(11 * BlockSize24, 20 * BlockSize24 - 5);
 }
 
 void Game::ModStartStatement(bool NewStartStatement) {
@@ -331,14 +334,19 @@ bool Game::Process(Timer& GameTimer, std::vector<unsigned char>& mover, unsigned
 	return true;
 }
 
-void Game::Draw() {
+void Game::Draw(Timer& GameTimer, unsigned short& StartTicks) {
+	if (GameTimer.GetTicks() < StartTicks) {
+		//this->Start();
+		Ready.render(11 * BlockSize24, 20 * BlockSize24 - 5);
+	}
 	mBoard.SetHighScore();
 	mBoard.SetScore();
 	mBoard.Draw(ActualMap, MapAnimationTimer);
-	if (!IsGameStarted) {
+	/*if (!IsGameStarted) {
+		std::cout << "Co render gameover k vay troi\n";
 		GameOverTexture.render(9 * BlockSize24, 20 * BlockSize24 - 5);
 		return;
-	}
+	}*/
 	mFruit.Draw();
 	if (!MapAnimationTimer.isStarted()) {
 		mClyde.Draw(mPac, GhostTimer, ScatterTime);

@@ -5,6 +5,8 @@ class GameStateMachine
 {
 public:
 
+	~GameStateMachine();
+
 	// add a state without removing the previous state
 	void pushState(GameState* pState);
 

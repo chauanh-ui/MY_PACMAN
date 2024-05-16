@@ -10,8 +10,8 @@ const unsigned char BlockSize32 = 32;
 const unsigned char BlockSize24 = 16;
 const unsigned short OffsetX = 50;
 const unsigned short OffsetY = 50;
-const unsigned short WindowWidth = OffsetX + BoardWidth * BlockSize24 + OffsetX;
-const unsigned short WindowHeight = OffsetY + BoardHeight * BlockSize24 + OffsetY;
+const unsigned short WindowWidth = OffsetX + BoardWidth * BlockSize24 + OffsetX; // 548
+const unsigned short WindowHeight = OffsetY + BoardHeight * BlockSize24 + OffsetY; // 676
 
 const std::string CharBoard =
 "                            "
@@ -80,10 +80,26 @@ enum BlockType {
 enum Direction {
 	Right, Up, Left, Down, Nowhere
 };
-
 enum EntityType {
 	ePacMan, eBlinky, eInky, ePinky, eClyde, Noone
 };
+
+
+enum class PlayMode {
+	Play, PlayExtra
+};
+enum class MapColor {
+	map_blue, map_green, map_pink, map_purple
+};
+
+enum class MapTheme {
+	Dark, Light
+};
+enum class PacType {
+	Original, Boy, Mom
+};
+
+
 
 //enum class GameState {
 //	Intro,

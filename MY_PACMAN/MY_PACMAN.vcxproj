@@ -137,6 +137,7 @@
     <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="Blinky.cpp" />
     <ClCompile Include="Board.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Clyde.cpp" />
     <ClCompile Include="Common.cpp" />
     <ClCompile Include="Entity.cpp" />
@@ -166,6 +167,7 @@
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="Blinky.h" />
     <ClInclude Include="Board.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="Clyde.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="Defs.h" />

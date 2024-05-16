@@ -58,3 +58,10 @@ void GameStateMachine::handleEvent(SDL_Event& event) {
 		m_gameStates.back()->handleEvent(event);
 	}
 }
+
+GameStateMachine::~GameStateMachine() {
+	if (!m_gameStates.empty())
+	{
+		m_gameStates.back()->onExit();
+	}
+}

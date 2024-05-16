@@ -43,9 +43,16 @@ public:
 	void DrawLittleScore();
 
 	bool Process(Timer& GameTimer, std::vector<unsigned char>& mover, unsigned short& StartTicks);
-	void Draw();
+	void Draw(Timer& GameTimer, unsigned short& StartTicks);
 	Sound mSound;
 private:
+	PlayMode playMode;
+	MapColor mapColor;
+	MapTheme mapTheme;
+	PacType pacType;
+
+
+
 	Board mBoard;
 	Pac mPac;
 	Blinky mBlinky;

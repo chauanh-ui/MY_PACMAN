@@ -1,5 +1,6 @@
 #include "Texture.h"
 #include "Globals.h"
+#include <iostream>
 
 //Texture::Texture(const std::string imagePath,const SDL_Rect& _src, const SDL_Rect& _dst, SDL_Renderer* renderer) {
 //	texture = loadImage(imagePath, renderer);
@@ -41,6 +42,7 @@ LTexture::~LTexture() {
 bool LTexture::loadFromFile(std::string path) {
 	//Get rid of preexisting texture
 	free();
+	std::cout << "1\n";
 
 	//The final texture
 	SDL_Texture* newTexture = NULL;
@@ -75,7 +77,6 @@ bool LTexture::loadFromFile(std::string path) {
 bool LTexture::loadFromRenderedText(std::string textureText, SDL_Color textColor, bool IsLittle) {
 	//Get rid of preexisting texture
 	free();
-
 	//Render text surface
 	SDL_Surface* textSurface = TTF_RenderText_Solid(IsLittle ? LittleFont : Font, textureText.c_str(), textColor);
 	if (textSurface == NULL) {

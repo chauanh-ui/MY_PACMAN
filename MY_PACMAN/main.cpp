@@ -83,7 +83,7 @@ int main(int argc, char* args[]) {
 	gameController->init();
 	gameController->running();
 
-
+	delete gameController;
 	//gameController->init(); 
 	//gameController->update();
 	//gameController->render();

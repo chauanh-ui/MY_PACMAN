@@ -38,7 +38,7 @@ void PlayState::update()
 void PlayState::render()
 {
 	if (processSuccess) {
-		mGame.Draw();
+		mGame.Draw(GameTimer, StartTicks);
 	}
 }
 
