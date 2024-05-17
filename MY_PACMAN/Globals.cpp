@@ -6,6 +6,7 @@ SDL_Rect* CurrentClip = NULL;
 TTF_Font* Font = NULL;
 TTF_Font* LittleFont = NULL;
 
+
 void InitializeSDL() {
 	SDL_Init(SDL_INIT_VIDEO);
 	window = SDL_CreateWindow("PacMan", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WindowWidth, WindowHeight, SDL_WINDOW_SHOWN);
@@ -13,7 +14,8 @@ void InitializeSDL() {
 	int imgFlags = IMG_INIT_PNG;
 	IMG_Init(imgFlags);
 	TTF_Init();
-    	LittleFont = TTF_OpenFont("Fonts/VpPixel.ttf", 20);
+	Font = TTF_OpenFont("Fonts/emulogic.ttf", BlockSize24);
+    LittleFont = TTF_OpenFont("Fonts/VpPixel.ttf", 20);
 	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024);
 }
 

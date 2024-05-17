@@ -46,11 +46,11 @@ public:
 	void Draw(Timer& GameTimer, unsigned short& StartTicks);
 	Sound mSound;
 private:
-	PlayMode playMode;
-	MapColor mapColor;
+	/*PlayMode playMode;
+	
 	MapTheme mapTheme;
 	PacType pacType;
-
+	MapColor mapColor;*/
 
 
 	Board mBoard;
