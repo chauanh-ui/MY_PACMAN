@@ -63,17 +63,25 @@ private:
 	Timer MapAnimationTimer;
 	LTexture Ready;
 	LTexture GameOverTexture;
+
+	// manage the whole game through actual map
+	// vay phai update cai nay
 	unsigned char ActualMap[BoardHeight * BoardWidth];
+
+
 	bool IsGameStarted;
 	Timer GhostTimer;
+
 	unsigned short ScatterTime;
 	unsigned short ChasingTime;
 	unsigned short GhostTimerTarget;
 	bool TimedStatus;
 	unsigned short Scorer;
+
 	std::vector<Timer> LittleScoreTimer;
 	std::vector<Position> LittleScorePositions;
 	std::vector<unsigned short> LittleScoreScorers;
+
 	unsigned short LittleTimerTarget;
 	unsigned short Level;
 	bool IsToScatterSound;

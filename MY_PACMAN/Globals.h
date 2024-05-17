@@ -13,9 +13,14 @@ const unsigned short OffsetY = 50;
 const unsigned short WindowWidth = OffsetX + BoardWidth * BlockSize24 + OffsetX; // 548
 const unsigned short WindowHeight = OffsetY + BoardHeight * BlockSize24 + OffsetY; // 676
 
+const int numberOfBoards = 1;
+
 extern std::string CharBoard;
+
+// index of charboard string in extraBoards;
+extern int board;
 extern bool isPlayExtra;
-extern std::vector<std::string> extraBoards;
+extern std::string extraBoards[numberOfBoards];
 
 //const std::string CharBoard =
 //"                            "
@@ -122,5 +127,9 @@ void InitializeSDL();
 void CloseSDL();
 
 void InitFrames(const unsigned char TotalFrames, SDL_Rect SpriteClips[], unsigned char CurrentBlockSize = BlockSize32);
+
+std::string readTextFileToString(const std::string& filename);
+
+void loadExtraBoards();
 
 #endif GLOBALS_H

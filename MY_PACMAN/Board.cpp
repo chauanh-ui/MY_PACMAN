@@ -18,27 +18,26 @@ Board::Board() {
 	switch (mapColor) {
 	case MapColor::map_blue:
 		MapTexture.setColor(0, 0, 255);
-		std::cout << "blue\n";
 		break;
 	case MapColor::map_green:
 		MapTexture.setColor(0, 255, 0);
-		std::cout << "green\n";
+		//std::cout << "green\n";
 		break;
 	case MapColor::map_pink:
 		MapTexture.setColor(255, 0, 0);
-		std::cout << "pink\n";
+		//std::cout << "pink\n";
 		break;
 	case MapColor::map_purple:
 		MapTexture.setColor(150, 150, 150);
-		std::cout << "purple\n";
+		//std::cout << "purple\n";
 		break;
 	default:
 		MapTexture.setColor(255, 255, 255);
-		std::cout << "default\n";
+		//std::cout << "default\n";
 		break;
 	};
 	
-	std::cout << "set color map texture\n";
+	//std::cout << "set color map texture\n";
 	this->ConvertSketch();
 	Score = 0;
 	IsExtra = false;
@@ -69,6 +68,11 @@ void Board::ConvertSketch() {
 	// update charboard trc khi ham nay goi 
 	// goi ham update charboard
 	// dua vao bien toan cuc isPlayExtra 
+	// update charboard o day
+	if (isPlayExtra) {
+		std::cout << "update charboard\n";
+		CharBoard = extraBoards[board];
+	}
 	for (unsigned short i = 0; i < BoardHeight * BoardWidth; i++) {
 		switch (CharBoard[i]) {
 		case '#':
@@ -138,7 +142,7 @@ void Board::SetHighScore() {
 	std::stringstream ss;
 	if (Score > High) {
 		ss << Score;
-		std::cout << "High score: " << Score << std::endl;
+		//std::cout << "High score: " << Score << std::endl;
 		std::ofstream HighScores("HighScore.txt");
 		HighScores << ss.str();
 	}
@@ -196,6 +200,7 @@ void Board::Draw(unsigned char ActualMap[], Timer MapAnimationTimer) {
 	}
 }
 
+// actual map dc copy tu numericboard sang, numberic board dc chuyen tu charboard
 void Board::CopyBoard(unsigned char ActualMap[]) {
 	memcpy(ActualMap, NumericBoard, BoardHeight * BoardWidth);
 }

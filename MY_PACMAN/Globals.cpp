@@ -46,8 +46,10 @@ std::string CharBoard =
 "                            ";
 
 bool isPlayExtra = false;
+int board = 0;
 
-std::vector<std::string> extraBoards;
+
+std::string extraBoards[numberOfBoards] = {""};
 
 
 
@@ -57,7 +59,8 @@ std::vector<std::string> extraBoards;
 
 
 void InitializeSDL() {
-	
+	std::cout << "CharBoard:" << CharBoard.length() << std::endl;
+	loadExtraBoards();
 	SDL_Init(SDL_INIT_VIDEO);
 	window = SDL_CreateWindow("PacMan", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WindowWidth, WindowHeight, SDL_WINDOW_SHOWN);
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_PRESENTVSYNC);
@@ -89,5 +92,34 @@ void InitFrames(const unsigned char TotalFrames, SDL_Rect SpriteClips[], unsigne
 		SpriteClips[i].w = CurrentBlockSize;
 		SpriteClips[i].h = CurrentBlockSize;
 		counter += CurrentBlockSize;
+	}
+}
+
+
+std::string readTextFileToString(const std::string& filename) {
+	std::ifstream file(filename);
+	std::string content = "";
+
+	if (file.is_open()) {
+		// Read the entire file into the string
+		std::string line;
+		while (getline(file, line)) {
+			content += line; // Add newline characters for preservation
+		}
+
+		file.close();
+	}
+	else {
+		// Handle file opening error (optional)
+	}
+	return content;
+}
+
+void loadExtraBoards() {
+	for (int i = 0; i < numberOfBoards; i++) {
+		std::string path = "Maps/charBoard" + std::to_string(i) + ".txt";
+		std::string board = readTextFileToString(path);
+		extraBoards[i] = board;
+		std::cout << extraBoards[i].length() << std::endl;
 	}
 }
