@@ -20,7 +20,9 @@ public:
 	void ScoreIncrease(unsigned short Scorer);
 	unsigned char GetLives();
 	void Draw(unsigned char ActualMap[], Timer MapAnimationTimer);
+	static void setMapColor(MapColor _mapColor);
 private:
+	static MapColor mapColor;
 	LTexture MapTexture;
 	LTexture PelletTexture;
 	LTexture EnergizerTexture;

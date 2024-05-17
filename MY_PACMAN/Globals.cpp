@@ -13,8 +13,7 @@ void InitializeSDL() {
 	int imgFlags = IMG_INIT_PNG;
 	IMG_Init(imgFlags);
 	TTF_Init();
-	Font = TTF_OpenFont("Fonts/emulogic.ttf", BlockSize24);
-	LittleFont = TTF_OpenFont("Fonts/VpPixel.ttf", 20);
+    	LittleFont = TTF_OpenFont("Fonts/VpPixel.ttf", 20);
 	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024);
 }
 

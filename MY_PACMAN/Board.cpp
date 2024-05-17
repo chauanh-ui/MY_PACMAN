@@ -2,6 +2,7 @@
 #include "Globals.h"
 #include <iostream>
 
+MapColor Board::mapColor = MapColor::map_pink;
 Board::Board() {
 	// if (!isPlayExtra)
 	MapTexture.loadFromFile("Textures/Map16.png");
@@ -11,7 +12,30 @@ Board::Board() {
 	LivesTexture.loadFromFile("Textures/Lives32.png");
 	ScoreWordTexture.loadFromRenderedText("Score", White);
 	HighScoreWordTexture.loadFromRenderedText("High Score", White);
-	MapTexture.setColor(80, 171, 104);
+	switch (mapColor) {
+	case MapColor::map_blue:
+		MapTexture.setColor(0, 0, 255);
+		std::cout << "blue\n";
+		break;
+	case MapColor::map_green:
+		MapTexture.setColor(0, 255, 0);
+		std::cout << "green\n";
+		break;
+	case MapColor::map_pink:
+		MapTexture.setColor(255, 0, 0);
+		std::cout << "pink\n";
+		break;
+	case MapColor::map_purple:
+		MapTexture.setColor(150, 150, 150);
+		std::cout << "purple\n";
+		break;
+	default:
+		MapTexture.setColor(255, 255, 255);
+		std::cout << "default\n";
+		break;
+	};
+	
+	std::cout << "set color map texture\n";
 	this->ConvertSketch();
 	Score = 0;
 	IsExtra = false;
@@ -192,4 +216,8 @@ void Board::ScoreIncrease(unsigned short Scorer) {
 		Score += Scorer;
 		break;
 	}
+}
+
+void Board::setMapColor(MapColor _mapColor) {
+	mapColor = _mapColor;
 }

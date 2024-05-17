@@ -4,7 +4,7 @@
 class Button 
 {
 public:
-	Button(std::string path, int _button_x, int _button_y, void (*callback)() = nullptr);
+	Button(std::string path, int _button_x, int _button_y, void (*callback)());
 	~Button();
 
 	// render texture len

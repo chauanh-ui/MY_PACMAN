@@ -21,6 +21,8 @@ public:
 	void handleEvent(SDL_Event& event);
 
 	void render(); // call render function of each state
+
+	std::string getCurrentStateId();
 private:
 	std::vector<GameState*> m_gameStates;
 };

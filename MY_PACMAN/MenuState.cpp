@@ -2,6 +2,8 @@
 #include "GameController.h"
 #include <iostream>
 #include "PlayState.h"
+#include "SettingState.h"
+#include "ChooseMapColorState.h"
 const std::string MenuState::s_menuID = "MENU";
 
 void MenuState::update()
@@ -13,9 +15,9 @@ void MenuState::update()
 	}*/
 	std::cout << "Menu update\n";
 	playButton->update();
-	/*playExtraButton->update();
+	//playExtraButton->update();
 	helpButton->update();
-	settingButton->update();*/
+	settingButton->update();
 }
 void MenuState::render()
 {
@@ -27,16 +29,16 @@ void MenuState::render()
 	std::cout << "Menu render\n";
 	menuTexture.render();
 	playButton->draw();
-	/*playExtraButton->draw();
+	//playExtraButton->draw();
 	helpButton->draw();
-	settingButton->draw();*/
+	settingButton->draw();
 }
 
 void MenuState::handleEvent(SDL_Event& event) {
 	playButton->handleEvents(event);
-	/*playExtraButton->handleEvents(event);
+	//playExtraButton->handleEvents(event);
 	helpButton->handleEvents(event);
-	settingButton->handleEvents(event);*/
+	settingButton->handleEvents(event);
 }
 
 // tao va load anh va load button
@@ -45,12 +47,11 @@ bool MenuState::onEnter()
 {
 	std::cout << "entering MenuState\n";
 	menuTexture.loadFromFile("Textures/Menu.png");
-	std::cout << "ua ua sao k load dc anh\n";
 	playButton = new Button("Textures/Button/playButton.png", 200, 200, playButtonOnClick);
 	
-	/*playExtraButton = new Button("Textures//Button//playExtraButton.png", 200, 300, playExtraButtonOnClick);
+	//playExtraButton = new Button("Textures//Button//playExtraButton.png", 200, 300, playExtraButtonOnClick);
 	helpButton = new Button("Textures//Button//helpButton.png", 200, 400, helpButtonOnClick);
-	settingButton = new Button("Textures//Button//settingButton.png", 200, 500, settingButtonOnClick);*/
+	settingButton = new Button("Textures/Button/settingButton.png", 200, 500, settingButtonOnClick);
 	return true;
 }
 
@@ -58,10 +59,13 @@ bool MenuState::onEnter()
 bool MenuState::onExit()
 {
 	//delete menuTexture;
-	delete playButton;
-	/*delete playExtraButton;
-	delete helpButton;
-	delete settingButton;*/
+	/*delete playButton;
+	playButton = nullptr;*/
+	//delete playExtraButton;
+	/*delete helpButton;
+	helpButton = nullptr;
+	delete settingButton;
+	settingButton = nullptr;*/
 	std::cout << "exiting MenuState\n";
 	return true;
 }
@@ -69,17 +73,19 @@ bool MenuState::onExit()
 void MenuState::playButtonOnClick()
 {
 	GameController::getStateMachine()->changeState(new PlayState());
-	std::cout << "Play button clicked\n";
+	//std::cout << "Play button clicked\n";
 }
 //void MenuState::playExtraButtonOnClick()
 //{
 //	std::cout << "Exit button clicked\n";
 //}
-//void MenuState::helpButtonOnClick()
-//{
-//	std::cout << "Help button clicked\n";
-//}
-//void MenuState::settingButtonOnClick()
-//{
-//	std::cout << "Setting button clicked\n";
-//}
+void MenuState::helpButtonOnClick()
+{
+	std::cout << "Help button clicked\n";
+	GameController::getStateMachine()->changeState(new ChooseMapColorState());
+}
+void MenuState::settingButtonOnClick()
+{
+	GameController::getStateMachine()->changeState(new SettingState());
+	std::cout << "Setting button clicked\n";
+}

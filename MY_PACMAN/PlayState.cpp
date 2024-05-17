@@ -10,10 +10,12 @@ bool PlayState::onEnter()
 	mover.push_back(Right);
 	GameTimer.Start();
 	mGame.mSound.PlayIntro();
+	std::cout << "het entering\n";
 	return true;
 }
 
 void PlayState::handleEvent(SDL_Event& event) {
+	std::cout << "enter playstate handle event\n";
 	if (event.key.state == SDL_PRESSED) {
 		if ((event.key.keysym.sym == SDLK_RIGHT || event.key.keysym.sym == SDLK_d))
 			mover.push_back(Right);
@@ -26,20 +28,26 @@ void PlayState::handleEvent(SDL_Event& event) {
 		if (mover.size() > 2)
 			mover.erase(mover.begin() + 1);
 	}
+	std::cout << "Het play state handle event\n";
 }
 
 void PlayState::update()
 {
+	std::cout << "enter playstate update\n";
 	if (mGame.Process(GameTimer, mover, StartTicks)) {
 		processSuccess = true;
 	}
+	std::cout << "Het play state update \n";
 }
 
 void PlayState::render()
 {
+	std::cout << "enter playstate render\n";
 	if (processSuccess) {
 		mGame.Draw(GameTimer, StartTicks);
 	}
+	std::cout << "Het playstate rneder \n";
+
 }
 
 bool PlayState::onExit()

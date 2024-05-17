@@ -57,6 +57,7 @@ const unsigned char GhostBodyFrames = 6;
 const unsigned char GhostEyeFrames = 5;
 const unsigned char FruitFrames = 8;
 
+
 const unsigned short ScoreTable[FruitFrames] = { 100, 300, 500, 700, 1000, 2000, 3000, 5000 };
 
 const SDL_Color Black = { 0x00, 0x00, 0x00 };

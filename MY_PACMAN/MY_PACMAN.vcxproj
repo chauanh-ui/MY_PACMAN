@@ -138,6 +138,7 @@
     <ClCompile Include="Blinky.cpp" />
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="ChooseMapColorState.cpp" />
     <ClCompile Include="Clyde.cpp" />
     <ClCompile Include="Common.cpp" />
     <ClCompile Include="Entity.cpp" />
@@ -158,6 +159,7 @@
     <ClCompile Include="Pinky.cpp" />
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="Position.cpp" />
+    <ClCompile Include="SettingState.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Timer.cpp" />
@@ -168,6 +170,7 @@
     <ClInclude Include="Blinky.h" />
     <ClInclude Include="Board.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="ChooseMapColorState.h" />
     <ClInclude Include="Clyde.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="Defs.h" />
@@ -190,6 +193,7 @@
     <ClInclude Include="Pinky.h" />
     <ClInclude Include="PlayState.h" />
     <ClInclude Include="Position.h" />
+    <ClInclude Include="SettingState.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Timer.h" />

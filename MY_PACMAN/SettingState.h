@@ -2,7 +2,7 @@
 #include"GameState.h"
 #include "Button.h"
 
-class MenuState : public GameState {
+class SettingState : public GameState {
 public:
 	virtual void update();
 	virtual void render();
@@ -13,16 +13,19 @@ public:
 private:
 	static const std::string s_menuID;
 	//std::vector<Button*> menuButtons;
-	LTexture menuTexture;
-	Button* playButton;
-	//Button* playExtraButton;
-	Button* helpButton;
-	Button* settingButton;
+	LTexture settingTexture;
+	//Button* chooseMapColorButton;
+	Button* backButton;
+
+	/*Button* playExtraButton;
+	Button* helpButton;*/
+
+	//Button* chooseMapThemeButton;
 
 	// call back functions for menu items
-	static void playButtonOnClick();
-	//static void playExtraButtonOnClick();
-	static void helpButtonOnClick();
-	static void settingButtonOnClick();
+	//static void chooseMapColorButtonOnClick();
 
+	static void backButtonOnClick();
+	
+	//static void chooseMapThemeButtonOnClick();
 };

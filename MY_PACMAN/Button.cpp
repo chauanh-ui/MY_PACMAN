@@ -16,7 +16,7 @@ Button::Button(std::string path, int _button_x, int _button_y, void (*callback)(
 	std::cout << "clip_h: " << clip.h << std::endl;
 	std::cout << "button()\n";
 	m_callback = callback;
-	std::cout << "call back lm sao???\n";
+	std::cout << "Call back function:\n" << *m_callback << std::endl;
 }
 void Button::draw()
 {
@@ -67,7 +67,7 @@ void Button::handleEvents(SDL_Event& event) {
 	else {
 		currentFrame = MOUSE_OUT;
 	}
-	std::cout << "Button handle Event\n";
+	//std::cout << "Button handle Event\n";
 }
 
 Button::~Button() {
