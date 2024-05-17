@@ -119,6 +119,7 @@ void Pac::Draw() {
 	if (this->IsAlive()) {
 		CurrentClip = &LivingPacSpriteClips[CurrLivingPacFrame / (LivingPacFrames * 4)];
 		LivingPac.render(this->GetX() - 8, this->GetY() - 8, this->GetFacing(), CurrentClip);
+		
 	}
 	else {
 		CurrentClip = &DeathPacSpriteClips[CurrDeathPacFrame / DeathPacFrames];

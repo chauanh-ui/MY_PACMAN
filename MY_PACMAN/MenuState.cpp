@@ -15,7 +15,7 @@ void MenuState::update()
 	}*/
 	std::cout << "Menu update\n";
 	playButton->update();
-	//playExtraButton->update();
+	playExtraButton->update();
 	helpButton->update();
 	settingButton->update();
 }
@@ -29,14 +29,14 @@ void MenuState::render()
 	std::cout << "Menu render\n";
 	menuTexture.render();
 	playButton->draw();
-	//playExtraButton->draw();
+	playExtraButton->draw();
 	helpButton->draw();
 	settingButton->draw();
 }
 
 void MenuState::handleEvent(SDL_Event& event) {
 	playButton->handleEvents(event);
-	//playExtraButton->handleEvents(event);
+	playExtraButton->handleEvents(event);
 	helpButton->handleEvents(event);
 	settingButton->handleEvents(event);
 }
@@ -49,7 +49,7 @@ bool MenuState::onEnter()
 	menuTexture.loadFromFile("Textures/Menu.png");
 	playButton = new Button("Textures/Button/playButton.png", 200, 200, playButtonOnClick);
 	
-	//playExtraButton = new Button("Textures//Button//playExtraButton.png", 200, 300, playExtraButtonOnClick);
+	playExtraButton = new Button("Textures//Button//playExtraButton.png", 200, 300, playExtraButtonOnClick);
 	helpButton = new Button("Textures//Button//helpButton.png", 200, 400, helpButtonOnClick);
 	settingButton = new Button("Textures/Button/settingButton.png", 200, 500, settingButtonOnClick);
 	return true;
@@ -75,10 +75,12 @@ void MenuState::playButtonOnClick()
 	GameController::getStateMachine()->changeState(new PlayState());
 	//std::cout << "Play button clicked\n";
 }
-//void MenuState::playExtraButtonOnClick()
-//{
-//	std::cout << "Exit button clicked\n";
-//}
+void MenuState::playExtraButtonOnClick()
+{
+	isPlayExtra = true;
+	GameController::getStateMachine()->changeState(new PlayState());
+	std::cout << "Exit button clicked\n";
+}
 void MenuState::helpButtonOnClick()
 {
 	std::cout << "Help button clicked\n";

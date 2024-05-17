@@ -23,6 +23,9 @@ public:
 	static void setMapColor(MapColor _mapColor);
 private:
 	static MapColor mapColor;
+
+	LTexture WallTexture;
+
 	LTexture MapTexture;
 	LTexture PelletTexture;
 	LTexture EnergizerTexture;

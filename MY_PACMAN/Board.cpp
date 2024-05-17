@@ -5,6 +5,9 @@
 MapColor Board::mapColor = MapColor::map_pink;
 Board::Board() {
 	// if (!isPlayExtra)
+	// if (theme == darktheme)
+	WallTexture.loadFromFile("Textures/darkThemeWallTexture.png");
+
 	MapTexture.loadFromFile("Textures/Map16.png");
 	PelletTexture.loadFromFile("Textures/Pellet24.png");
 	EnergizerTexture.loadFromFile("Textures/Energizer24.png");
@@ -44,6 +47,7 @@ Board::Board() {
 
 Board::~Board() {
 	// if (!isPlayExtra)
+	WallTexture.free();
 	MapTexture.free();
 	PelletTexture.free();
 	EnergizerTexture.free();
@@ -151,7 +155,20 @@ void Board::Draw(unsigned char ActualMap[], Timer MapAnimationTimer) {
 	HighScoreTexture.render(236, BlockSize24 + 5);
 	// Dua vao bien isPlayExtra de render lai Map Texture
 	// Tao 1 ham rieng mapRender()
-	MapTexture.render();
+	if (!isPlayExtra) {
+		MapTexture.render();
+	}
+	else {
+		char y = -1;
+		for (unsigned short i = 0; i < BoardHeight * BoardWidth; i++) {
+			unsigned char x = i % BoardWidth;
+			if (x == 0)
+				y++;
+			if (ActualMap[i] == BlockType::Wall)
+				WallTexture.render(x * BlockSize24, y * BlockSize24);
+		}
+	}
+	
 	for (unsigned char i = 0; i < Lives; i++) {
 		//LivesTexture.render(i * BlockSize32, 26 * BlockSize32 - BlockSize32 / 4);
 		LivesTexture.render(i * BlockSize32, WindowHeight - 4 * BlockSize32);

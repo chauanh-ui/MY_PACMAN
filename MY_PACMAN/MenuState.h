@@ -15,13 +15,13 @@ private:
 	//std::vector<Button*> menuButtons;
 	LTexture menuTexture;
 	Button* playButton;
-	//Button* playExtraButton;
+	Button* playExtraButton;
 	Button* helpButton;
 	Button* settingButton;
 
 	// call back functions for menu items
 	static void playButtonOnClick();
-	//static void playExtraButtonOnClick();
+	static void playExtraButtonOnClick();
 	static void helpButtonOnClick();
 	static void settingButtonOnClick();
 
