@@ -1,4 +1,5 @@
 #include "Ghost.h"
+#include <iostream>
 
 //
 //
@@ -113,10 +114,25 @@
 //	}
 //}
 Ghost::Ghost(SDL_Color MyColor, EntityType MyIdentity) : Entity(MyIdentity) {
-	Body.loadFromFile("Textures/GhostBody32.png");
+	if (isPlayExtra) {
+		Body.loadFromFile("Textures/GhostBody16.png");
+		Eyes.loadFromFile("Textures/GhostEyes16.png");
+		InitFrames(GhostBodyFrames, GhostBodySpriteClips, 16);
+		InitFrames(GhostEyeFrames, GhostEyeSpriteClips, 16);
+	}
+	else {
+		Body.loadFromFile("Textures/GhostBody32.png");
+		Eyes.loadFromFile("Textures/GhostEyes32.png");
+		InitFrames(GhostBodyFrames, GhostBodySpriteClips);
+		InitFrames(GhostEyeFrames, GhostEyeSpriteClips);
+	}
+
+	/*Body.loadFromFile("Textures/GhostBody32.png");
 	Eyes.loadFromFile("Textures/GhostEyes32.png");
 	InitFrames(GhostBodyFrames, GhostBodySpriteClips);
-	InitFrames(GhostEyeFrames, GhostEyeSpriteClips);
+	InitFrames(GhostEyeFrames, GhostEyeSpriteClips);*/
+
+
 	Color = MyColor;
 	CurrentBodyFrame = 0;
 	CanUseDoor = false;
@@ -307,10 +323,23 @@ void Ghost::Draw(Pac& mPac, Timer mGhostTimer, unsigned short mTimerTarget) {
 
 	if (this->IsAlive()) {
 		CurrentClip = &GhostBodySpriteClips[CurrentBodyFrame / GhostBodyFrames];
-		Body.render(this->GetX() - 8, this->GetY() - 8, 0, CurrentClip);
+
+		if (isPlayExtra) {
+			Body.render(this->GetX(), this->GetY(), 0, CurrentClip);
+		}
+		else {
+			Body.render(this->GetX() - 8, this->GetY() - 8, 0, CurrentClip);
+		}
 	}
 	CurrentClip = &GhostEyeSpriteClips[this->GetFacing()];
-	Eyes.render(this->GetX() - 8, this->GetY() - 8, 0, CurrentClip);
+	std::cout << "ghostX: " << this->GetX() << " ghostY: " << this->GetY();
+
+	if (isPlayExtra) {
+		Eyes.render(this->GetX(), this->GetY(), 0, CurrentClip);
+	}
+	else {
+		Eyes.render(this->GetX() - 8, this->GetY() - 8, 0, CurrentClip);
+	}
 	CurrentBodyFrame++;
 	if (CurrentBodyFrame / GhostBodyFrames >= GhostBodyFrames) {
 		CurrentBodyFrame = 0;
