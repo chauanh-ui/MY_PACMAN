@@ -1,4 +1,4 @@
-#include "Globals.h"
+﻿#include "Globals.h"
 #include <iostream>
 
 SDL_Window* window = NULL;
@@ -96,29 +96,59 @@ void InitFrames(const unsigned char TotalFrames, SDL_Rect SpriteClips[], unsigne
 }
 
 
-std::string readTextFileToString(const std::string& filename) {
-	std::ifstream file(filename);
+//std::string readTextFileToString(const std::string& filename) {
+//	std::ifstream file(filename);
+//	std::string content = "";
+//
+//	if (file.is_open()) {
+//		// Read the entire file into the string
+//		std::string line;
+//		while (getline(file, line)) {
+//			content += line; // Add newline characters for preservation
+//		}
+//
+//		file.close();
+//	}
+//	else {
+//		// Handle file opening error (optional)
+//	}
+//	return content;
+//}
+
+std::string readStringFromCSVFile(const std::string& filePath, int numRows, int numsPerRow) {
+	// Mở tệp để đọc
+	std::ifstream file(filePath);
 	std::string content = "";
+	if (!file.is_open()) {
+		std::cerr << "Không thể mở tệp " << filePath << " để đọc." << std::endl;
+		return content; // Trả về string trống nếu không thể mở tệp
+	}
 
-	if (file.is_open()) {
-		// Read the entire file into the string
-		std::string line;
-		while (getline(file, line)) {
-			content += line; // Add newline characters for preservation
+	std::string line;
+	int row = 0;
+	while (std::getline(file, line) && row < numRows) {
+		std::istringstream iss(line);
+		char num;
+		char comma;
+		int col = 0;
+		while (iss >> num && iss >> comma && col < numsPerRow) {
+			if (num == ' ') continue;
+			content += num;
+			col++;
 		}
+		row++;
+	}
 
-		file.close();
-	}
-	else {
-		// Handle file opening error (optional)
-	}
+	file.close(); // Đóng tệp sau khi đọc xong
+
 	return content;
 }
 
+
 void loadExtraBoards() {
 	for (int i = 0; i < numberOfBoards; i++) {
-		std::string path = "Maps/charBoard" + std::to_string(i) + ".txt";
-		std::string board = readTextFileToString(path);
+		//std::string path = "Maps/map_" + std::to_string(i+1) + ".txt";
+		std::string board = readStringFromCSVFile("Maps/map_2.txt", BoardHeight, BoardWidth);
 		extraBoards[i] = board;
 		std::cout << extraBoards[i].length() << std::endl;
 	}

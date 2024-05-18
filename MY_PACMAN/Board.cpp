@@ -6,8 +6,10 @@ MapColor Board::mapColor = MapColor::map_pink;
 Board::Board() {
 	// if (!isPlayExtra)
 	// if (theme == darktheme)
-	WallTexture.loadFromFile("Textures/darkThemeWallTexture.png");
-
+	if (isPlayExtra) {
+		WallTexture.loadFromFile("Textures/water.png");
+	}
+	
 	MapTexture.loadFromFile("Textures/Map16.png");
 	PelletTexture.loadFromFile("Textures/Pellet24.png");
 	EnergizerTexture.loadFromFile("Textures/Energizer24.png");

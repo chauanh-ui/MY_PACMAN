@@ -2,11 +2,26 @@
 
 Pac::Pac() :Entity(EntityType::ePacMan) {
 	// if (pacType == 0) (==1, ==2)
-	LivingPac.loadFromFile("Textures/PacMan32.png");
+	if (isPlayExtra) {
+		LivingPac.loadFromFile("Textures/PacMan16.png");
+		//DeathPac.loadFromFile("Textures/GameOver16.png");
+		InitFrames(LivingPacFrames, LivingPacSpriteClips, 16);
+		//InitFrames(DeathPacFrames, DeathPacSpriteClips);
+	}
+	else {
+		LivingPac.loadFromFile("Textures/PacMan32.png");
+		DeathPac.loadFromFile("Textures/GameOver32.png");
+		InitFrames(LivingPacFrames, LivingPacSpriteClips);
+		InitFrames(DeathPacFrames, DeathPacSpriteClips);
+	}
 	// if (pacType == 0)
-	DeathPac.loadFromFile("Textures/GameOver32.png");
-	InitFrames(LivingPacFrames, LivingPacSpriteClips);
-	InitFrames(DeathPacFrames, DeathPacSpriteClips);
+	//DeathPac.loadFromFile("Textures/GameOver32.png");
+	//if (isPlayExtra) {
+	//	InitFrames(LivingPacFrames, LivingPacSpriteClips, 16);
+	//	//InitFrames(DeathPacFrames, DeathPacSpriteClips, 16);
+	//} 
+	//InitFrames(LivingPacFrames, LivingPacSpriteClips);
+	//InitFrames(DeathPacFrames, DeathPacSpriteClips);
 	CurrLivingPacFrame = 0;
 	CurrDeathPacFrame = 0;
 	EnergyStatus = false;
@@ -118,7 +133,13 @@ void Pac::WallCollisionFrame() {
 void Pac::Draw() {
 	if (this->IsAlive()) {
 		CurrentClip = &LivingPacSpriteClips[CurrLivingPacFrame / (LivingPacFrames * 4)];
-		LivingPac.render(this->GetX() - 8, this->GetY() - 8, this->GetFacing(), CurrentClip);
+		if (isPlayExtra) {
+			LivingPac.render(this->GetX(), this->GetY(), this->GetFacing(), CurrentClip);
+		}
+		else {
+			LivingPac.render(this->GetX() - 8, this->GetY() - 8, this->GetFacing(), CurrentClip);
+		}
+		
 		
 	}
 	else {
