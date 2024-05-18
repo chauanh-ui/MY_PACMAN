@@ -10,19 +10,19 @@ Board::Board() {
 		switch (mazeTexture)
 		{
 		case water:
-			WallTexture.loadFromFile("Textures/water.png");
+			WallTexture.loadFromFile("Textures/WallTexture/water.png");
 			break;
 		case sand:
-			WallTexture.loadFromFile("Textures/sand.png");
+			WallTexture.loadFromFile("Textures/WallTexture/sand.png");
 			break;
 		case wood:
-			WallTexture.loadFromFile("Textures/wood.png");
+			WallTexture.loadFromFile("Textures/WallTexture/wood.png");
 			break;
 		case leaf:
-			WallTexture.loadFromFile("Textures/leaf.png");
+			WallTexture.loadFromFile("Textures/WallTexture/leaf.png");
 			break;
 		default:
-			WallTexture.loadFromFile("Textures/sand.png");
+			WallTexture.loadFromFile("Textures/WallTexture/sand.png");
 			break;
 		}
 	}

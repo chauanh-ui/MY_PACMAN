@@ -19,7 +19,7 @@ private:
 	Button* light_blue_button;
 	Button* red_button;
 
-	Button* play_Button;
+	//Button* play_Button;
 
 
 	Button* backButton;

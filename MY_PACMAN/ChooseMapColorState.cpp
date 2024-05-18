@@ -13,7 +13,7 @@ void ChooseMapColorState::update()
 	green_button->update();
 	light_blue_button->update();
 	red_button->update();
-	play_Button->update();
+	//play_Button->update();
 	backButton->update();
 	
 }
@@ -30,7 +30,7 @@ void ChooseMapColorState::render()
 	green_button->draw();
 	light_blue_button->draw();
 	red_button->draw();
-	play_Button->draw();
+	//play_Button->draw();
 	backButton->draw();
 }
 
@@ -39,7 +39,7 @@ void ChooseMapColorState::handleEvent(SDL_Event& event) {
 	green_button->handleEvents(event);
 	light_blue_button->handleEvents(event);
 	red_button->handleEvents(event);
-	play_Button->handleEvents(event);
+	//play_Button->handleEvents(event);
 	backButton->handleEvents(event);
 
 }
@@ -49,7 +49,7 @@ void ChooseMapColorState::handleEvent(SDL_Event& event) {
 bool ChooseMapColorState::onEnter()
 {
 	std::cout << "entering choose map color state\n";
-	chooseMapColorTexture.loadFromFile("Textures/ChooseMapColorState.png");
+	chooseMapColorTexture.loadFromFile("Textures/ChooseMapColor.png");
 	blue_button = new Button("Textures/Button/blue_button.png", 39, 198, blue_button_on_click);
 	green_button = new Button("Textures/Button/green_button.png", 294, 198, green_button_on_click);
 	light_blue_button = new Button("Textures/Button/light_blue_button.png", 39, 434, light_blue_button_on_click);

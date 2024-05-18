@@ -3,6 +3,7 @@
 #include "GameController.h"
 #include <iostream>
 #include "PlayState.h"
+#include "ChooseMazeState.h"
 const std::string ChooseMapThemeState::s_menuID = "CHOOSE_MAP_THEME";
 
 void ChooseMapThemeState::update()
@@ -94,30 +95,30 @@ bool ChooseMapThemeState::onExit()
 void ChooseMapThemeState::water_button_on_click()
 {
 	mazeTexture = water;
-	GameController::getStateMachine()->changeState(new PlayState());
+	GameController::getStateMachine()->changeState(new ChooseMazeState());
 	std::cout << "color_01_button_on_click\n";
 }
 void ChooseMapThemeState::sand_button_on_click()
 {
 	mazeTexture = sand;
-	GameController::getStateMachine()->changeState(new PlayState());
+	GameController::getStateMachine()->changeState(new ChooseMazeState());
 	std::cout << "color_02_button_on_click\n";
 }
 void ChooseMapThemeState::wood_button_on_click()
 {
 	mazeTexture = wood;
-	GameController::getStateMachine()->changeState(new PlayState());
+	GameController::getStateMachine()->changeState(new ChooseMazeState());
 	std::cout << "color_03_button_on_click\n";
 }
 void ChooseMapThemeState::leaf_button_on_click()
 {
 	mazeTexture = leaf;
-	GameController::getStateMachine()->changeState(new PlayState());
+	GameController::getStateMachine()->changeState(new ChooseMazeState());
 	std::cout << "color_04_button_on_click\n";
 }
 void ChooseMapThemeState::backButtonOnClick()
 {
-	GameController::getStateMachine()->changeState(new MenuState());
+	GameController::getStateMachine()->changeState(new ChooseMazeState());
 	std::cout << "back button clicked\n";
 }
 //void ChooseMapColorState::play_ButtonOnClick()

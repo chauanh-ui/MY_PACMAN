@@ -2,8 +2,11 @@
 #include "GameController.h"
 #include <iostream>
 #include "PlayState.h"
+#include "HelpState.h"
 #include "SettingState.h"
 #include "ChooseMapColorState.h"
+#include "ChooseMapThemeState.h"
+
 const std::string MenuState::s_menuID = "MENU";
 
 void MenuState::update()
@@ -49,8 +52,8 @@ bool MenuState::onEnter()
 	menuTexture.loadFromFile("Textures/Menu.png");
 	playButton = new Button("Textures/Button/playButton.png", 215, 479, playButtonOnClick);
 	
-	playExtraButton = new Button("Textures//Button//playExtraButton.png", 156, 559, playExtraButtonOnClick);
-	helpButton = new Button("Textures//Button//helpButton.png", 219, 639, helpButtonOnClick);
+	playExtraButton = new Button("Textures/Button/playExtraButton.png", 156, 559, playExtraButtonOnClick);
+	helpButton = new Button("Textures/Button/helpButton.png", 219, 639, helpButtonOnClick);
 	//settingButton = new Button("Textures/Button/settingButton.png", 200, 500, settingButtonOnClick);
 	return true;
 }
@@ -73,13 +76,13 @@ bool MenuState::onExit()
 void MenuState::playButtonOnClick()
 {
 	isPlayExtra = false;
-	GameController::getStateMachine()->changeState(new PlayState());
+	GameController::getStateMachine()->changeState(new ChooseMapColorState());
 	//std::cout << "Play button clicked\n";
 }
 void MenuState::playExtraButtonOnClick()
 {
 	isPlayExtra = true;
-	GameController::getStateMachine()->changeState(new PlayState());
+	GameController::getStateMachine()->changeState(new ChooseMapThemeState());
 	std::cout << "Exit button clicked\n";
 }
 void MenuState::helpButtonOnClick()

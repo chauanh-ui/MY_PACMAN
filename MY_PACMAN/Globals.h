@@ -13,7 +13,7 @@ const unsigned short OffsetY = 50;
 const unsigned short WindowWidth = OffsetX + BoardWidth * BlockSize24 + OffsetX; // 548
 const unsigned short WindowHeight = OffsetY + BoardHeight * BlockSize24 + OffsetY; // 776
 
-const int numberOfBoards = 2;
+const int numberOfBoards = 3;
 
 extern std::string CharBoard;
 

@@ -3,7 +3,7 @@
 #include "GameController.h"
 #include <iostream>
 #include "PlayState.h"
-const std::string ChooseMazeState::s_menuID = "CHOOSE_MAP_COLOR";
+const std::string ChooseMazeState::s_menuID = "CHOOSE_MAZE";
 
 void ChooseMazeState::update()
 {
@@ -16,8 +16,14 @@ void ChooseMazeState::update()
 void ChooseMazeState::render()
 {
 	chooseMazeTexture.render(-OffsetX, -OffsetY);
-
 	previous_button->draw();
+	// render mazePreview
+
+	std::cout << "board: " << board << std::endl;
+	mazePreview[board].render(50 - OffsetX, 261 - OffsetY);
+
+
+	
 	next_button->draw();
 	playButton->draw();
 
@@ -35,10 +41,17 @@ void ChooseMazeState::handleEvent(SDL_Event& event) {
 bool ChooseMazeState::onEnter()
 {
 	std::cout << "entering choose map color state\n";
-	chooseMazeTexture.loadFromFile("Textures/ChooseMapColorState.png");
-	previous_button = new Button("Textures/Button/blue_button.png", 352, 387, previous_button_on_click);
-	next_button = new Button("Textures/Button/green_button.png", 517, 443, next_button_on_click);
-	playButton = new Button("Textures/Button/light_blue_button.png", 385, 314, playButtonOnClick);
+	chooseMazeTexture.loadFromFile("Textures/ChooseMaze.png");
+
+	// vong for load mazePreview
+	for (int i = 0; i < numberOfBoards; i++) {
+		std::string path = "Maps/map_" + std::to_string(i) + ".png";
+		mazePreview[i].loadFromFile(path);
+	}
+
+	previous_button = new Button("Textures/Button/previous_button.png", 352, 387, previous_button_on_click);
+	next_button = new Button("Textures/Button/next_button.png", 517, 443, next_button_on_click);
+	playButton = new Button("Textures/Button/playButton.png", 385, 314, playButtonOnClick);
 	return true;
 }
 
@@ -81,7 +94,10 @@ void ChooseMazeState::previous_button_on_click()
 }
 void ChooseMazeState::next_button_on_click()
 {
-	board = (board + 1) % numberOfBoards;
+	board++;
+	if (board > numberOfBoards - 1) {
+		board = 0;
+	}
 	std::cout << "next_button_on_click\n";
 }
 
