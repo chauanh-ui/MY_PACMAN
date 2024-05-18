@@ -2,12 +2,29 @@
 #include "Globals.h"
 #include <iostream>
 
-MapColor Board::mapColor = MapColor::map_pink;
+MapColor Board::mapColor = MapColor::map_blue;
 Board::Board() {
 	// if (!isPlayExtra)
 	// if (theme == darktheme)
 	if (isPlayExtra) {
-		WallTexture.loadFromFile("Textures/water.png");
+		switch (mazeTexture)
+		{
+		case water:
+			WallTexture.loadFromFile("Textures/water.png");
+			break;
+		case sand:
+			WallTexture.loadFromFile("Textures/sand.png");
+			break;
+		case wood:
+			WallTexture.loadFromFile("Textures/wood.png");
+			break;
+		case leaf:
+			WallTexture.loadFromFile("Textures/leaf.png");
+			break;
+		default:
+			WallTexture.loadFromFile("Textures/sand.png");
+			break;
+		}
 	}
 	
 	MapTexture.loadFromFile("Textures/Map16.png");
@@ -19,18 +36,18 @@ Board::Board() {
 	HighScoreWordTexture.loadFromRenderedText("High Score", White);
 	switch (mapColor) {
 	case MapColor::map_blue:
-		MapTexture.setColor(0, 0, 255);
+		MapTexture.setColor(48, 84, 181);
 		break;
 	case MapColor::map_green:
-		MapTexture.setColor(0, 255, 0);
+		MapTexture.setColor(59, 141, 49);
 		//std::cout << "green\n";
 		break;
-	case MapColor::map_pink:
-		MapTexture.setColor(255, 0, 0);
+	case MapColor::map_red:
+		MapTexture.setColor(209, 67, 129);
 		//std::cout << "pink\n";
 		break;
-	case MapColor::map_purple:
-		MapTexture.setColor(150, 150, 150);
+	case MapColor::map_light_blue:
+		MapTexture.setColor(38, 177, 171);
 		//std::cout << "purple\n";
 		break;
 	default:

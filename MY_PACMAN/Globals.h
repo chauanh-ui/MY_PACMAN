@@ -13,52 +13,21 @@ const unsigned short OffsetY = 50;
 const unsigned short WindowWidth = OffsetX + BoardWidth * BlockSize24 + OffsetX; // 548
 const unsigned short WindowHeight = OffsetY + BoardHeight * BlockSize24 + OffsetY; // 776
 
-const int numberOfBoards = 1;
+const int numberOfBoards = 2;
 
 extern std::string CharBoard;
 
-// index of charboard string in extraBoards;
+// index of charboard string in extraBoards; // update in choose maze state
 extern int board;
 extern bool isPlayExtra;
 extern std::string extraBoards[numberOfBoards];
 
-//const std::string CharBoard =
-//"                            "
-//"                            "
-//"                            "
-//"############################"
-//"#............##............#"
-//"#.####.#####.##.#####.####.#"
-//"#o####.#####.##.#####.####o#"
-//"#.####.#####.##.#####.####.#"
-//"#..........................#"
-//"#.####.##.########.##.####.#"
-//"#.####.##.########.##.####.#"
-//"#......##....##....##......#"
-//"######.##### ## #####.######"
-//"     #.##### ## #####.#     "
-//"     #.##    1     ##.#     "
-//"     #.## ###==### ##.#     "
-//"######.## #      # ##.######"
-//"      .   #2 3 4 #   .      "
-//"######.## #      # ##.######"
-//"     #.## ######## ##.#     "
-//"     #.##          ##.#     "
-//"     #.## ######## ##.#     "
-//"######.## ######## ##.######"
-//"#............##............#"
-//"#.####.#####.##.#####.####.#"
-//"#.####.#####.##.#####.####.#"
-//"#o..##.......0 .......##..o#"
-//"###.##.##.########.##.##.###"
-//"###.##.##.########.##.##.###"
-//"#......##....##....##......#"
-//"#.##########.##.##########.#"
-//"#.##########.##.##########.#"
-//"#..........................#"
-//"############################"
-//"                            "
-//"                            ";
+// update in choose map theme state
+extern int mazeTexture;
+enum blockTexture {
+	water, sand, wood, leaf
+};
+
 
 const unsigned char LivingPacFrames = 3;
 const unsigned char DeathPacFrames = 10;
@@ -97,31 +66,11 @@ enum EntityType {
 };
 
 
-enum class PlayMode {
-	Play, PlayExtra
-};
 enum class MapColor {
-	map_blue, map_green, map_pink, map_purple
-};
-
-enum class MapTheme {
-	Dark, Light
-};
-enum class PacType {
-	Original, Boy, Mom
+	map_blue, map_green, map_light_blue, map_red
 };
 
 
-
-//enum class GameState {
-//	Intro,
-//	Setting,
-//	Play, // setting chinh am thanh
-//	ChooseMap,
-//	ChooseChar,
-//	PlayExtra,
-//	Quit
-//};
 
 void InitializeSDL();
 void CloseSDL();

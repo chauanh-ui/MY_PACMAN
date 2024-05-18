@@ -8,7 +8,7 @@ TTF_Font* Font = NULL;
 TTF_Font* LittleFont = NULL;
 
 std::string CharBoard =
-"                            "
+"                            " // 1
 "                            "
 "                            "
 "############################"
@@ -23,11 +23,11 @@ std::string CharBoard =
 "######.##### ## #####.######"
 "     #.##### ## #####.#     "
 "     #.##    1     ##.#     "
-"     #.## ###==### ##.#     "
+"     #.## ###==### ##.#     " // 16
 "######.## #      # ##.######"
 "      .   #2 3 4 #   .      "
 "######.## #      # ##.######"
-"     #.## ######## ##.#     "
+"     #.## ######## ##.#     " // 20
 "     #.##          ##.#     "
 "     #.## ######## ##.#     "
 "######.## ######## ##.######"
@@ -47,6 +47,7 @@ std::string CharBoard =
 
 bool isPlayExtra = false;
 int board = 0;
+int mazeTexture = sand;
 
 
 std::string extraBoards[numberOfBoards] = {""};
@@ -147,8 +148,8 @@ std::string readStringFromCSVFile(const std::string& filePath, int numRows, int 
 
 void loadExtraBoards() {
 	for (int i = 0; i < numberOfBoards; i++) {
-		//std::string path = "Maps/map_" + std::to_string(i+1) + ".txt";
-		std::string board = readStringFromCSVFile("Maps/map_2.txt", BoardHeight, BoardWidth);
+		std::string path = "Maps/map_" + std::to_string(i) + ".txt";
+		std::string board = readStringFromCSVFile(path, BoardHeight, BoardWidth);
 		extraBoards[i] = board;
 		std::cout << extraBoards[i].length() << std::endl;
 	}

@@ -1,8 +1,9 @@
 #pragma once
+#pragma once
 #include"GameState.h"
 #include "Button.h"
 
-class ChooseMapColorState : public GameState {
+class ChooseMapThemeState : public GameState {
 public:
 	virtual void update();
 	virtual void render();
@@ -13,13 +14,13 @@ public:
 private:
 	static const std::string s_menuID;
 	//std::vector<Button*> menuButtons;
-	LTexture chooseMapColorTexture;
-	Button* blue_button;
-	Button* green_button;
-	Button* light_blue_button;
-	Button* red_button;
+	LTexture chooseMapThemeTexture;
+	Button* water_button;
+	Button* sand_button;
+	Button* wood_button;
+	Button* leaf_button;
 
-	Button* play_Button;
+	//Button* play_Button;
 
 
 	Button* backButton;
@@ -30,14 +31,14 @@ private:
 	//Button* chooseMapThemeButton;
 
 	// call back functions for menu items
-	static void blue_button_on_click();
-	static void green_button_on_click();
-	static void light_blue_button_on_click();
-	static void red_button_on_click();
+	static void water_button_on_click();
+	static void sand_button_on_click();
+	static void wood_button_on_click();
+	static void leaf_button_on_click();
 
 	//static void play_ButtonOnClick();
 
 	static void backButtonOnClick();
-	
+
 	//static void chooseMapThemeButtonOnClick();
 };
