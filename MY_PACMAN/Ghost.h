@@ -102,6 +102,11 @@ public:
 	void UpdateFacing(Pac& mPac);
 	void UpdateSpeed(Pac& mPac);
 	void Draw(Pac& mPac, Timer mGhostTimer, unsigned short mTimerTarget);
+
+	void modIsAddedGhost(bool isAddedGhost);
+
+	bool getIsAddedGhost();
+
 	Position Target;
 	Position ScatterTarget;
 	Position DoorTarget;
@@ -116,7 +121,7 @@ private:
 	bool CanUseDoor;
 	bool Status; // false -> chase	true -> scatter
 
-	//bool isAddedGhost;
+	bool isAddedGhost;
 };
 
 #endif GHOST_H

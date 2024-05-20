@@ -114,6 +114,9 @@
     <ClCompile Include="HelpState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AddedGhost.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defs.h">
@@ -219,6 +222,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ChooseMazeState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AddedGhost.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

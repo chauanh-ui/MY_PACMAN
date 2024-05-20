@@ -25,7 +25,7 @@ std::string CharBoard =
 "     #.##    1     ##.#     " // 12
 "     #.## ###==### ##.#     " // 13
 "######.## #      # ##.######"
-"      .   #2 3 4 #   .      "
+"      .   #2 354 #   .      "
 "######.## #      # ##.######"
 "     #.## ######## ##.#     " // 20
 "     #.##          ##.#     "
@@ -46,7 +46,7 @@ std::string CharBoard =
 "                            ";
 
 bool isPlayExtra = false;
-bool isGhostAdded = false;
+bool isGhostAdded = true;
 int board = 0;
 int mazeTexture = sand;
 
@@ -55,13 +55,9 @@ std::string extraBoards[numberOfBoards] = {""};
 
 
 
-
-
-
-
-
 void InitializeSDL() {
 	std::cout << "CharBoard:" << CharBoard.length() << std::endl;
+	std::cout << "width: " << WindowWidth << " height: " << WindowHeight << std::endl;
 	loadExtraBoards();
 	SDL_Init(SDL_INIT_VIDEO);
 	window = SDL_CreateWindow("PacMan", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WindowWidth, WindowHeight, SDL_WINDOW_SHOWN);

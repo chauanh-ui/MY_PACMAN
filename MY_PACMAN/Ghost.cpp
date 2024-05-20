@@ -138,6 +138,8 @@ Ghost::Ghost(SDL_Color MyColor, EntityType MyIdentity) : Entity(MyIdentity) {
 	CanUseDoor = false;
 	Status = false;
 	DoorTarget.ModCoords(13 * BlockSize24 + BlockSize24 / 2, 15 * BlockSize24);
+	
+	isAddedGhost = false;
 }
 
 Ghost::~Ghost() {
@@ -148,6 +150,10 @@ Ghost::~Ghost() {
 bool Ghost::IsTargetToCalculate(Pac& mPac) {
 
 	// eyes get back to home
+	/*if (isAddedGhost && !mPac.IsEnergized()) {
+		Target.ModPos(Home);
+		return false;
+	}*/
 
 	if (!this->IsAlive()) {
 		CanUseDoor = true;
@@ -156,21 +162,22 @@ bool Ghost::IsTargetToCalculate(Pac& mPac) {
 			this->ModLifeStatement(true);
 		return false;
 	}
-	/*if (isAddedGhost && !mPac.isEnergized()) {
-		Target.ModPos(Home);
-		return false;
-	}*/
+	
 	// add ghost target == mPac.pos // target.ModPos == m.Pacpos
 	if (this->IsHome() && mPac.IsEnergized()) {
-		/*if (isAddedGhost) {
-			Target.ModPos(mPac->getPos());
+		if (isAddedGhost) {
+			Target.ModY(mPac.GetY());
+			Target.ModX(mPac.GetX());
 			return false;
-		}*/
-		if (this->GetPos() == Home.GetPos())
-			Target.ModY(this->Home.GetY() - BlockSize24);
-		else if (this->GetX() == Home.GetX() && this->GetY() == Home.GetY() - BlockSize24)
-			Target.ModY(this->Home.GetY());
-		return false;
+		}
+		else {
+			if (this->GetPos() == Home.GetPos())
+				Target.ModY(this->Home.GetY() - BlockSize24);
+			else if (this->GetX() == Home.GetX() && this->GetY() == Home.GetY() - BlockSize24)
+				Target.ModY(this->Home.GetY());
+				return false;
+		}
+		
 	}
 
 	if (this->IsHome() && this->IsAlive()) {
@@ -251,30 +258,30 @@ void Ghost::ModStatus(bool NewStatus) {
 
 void Ghost::UpdateStatus(Pac& mPac, bool TimedStatus) {
 	// false -> chase	true -> scatter
-	/*if (isAddedGhost) {
-	*	// if mPac is energized, then addGhost is chasing
+	if (isAddedGhost) {
+	// if mPac is energized, then addGhost is chasing
 		if (mPac.IsEnergized()) {
 			Status = false;
 		}
-	} else {*/
-	
-
-
-	if (mPac.IsEnergized()) {
-		if (!Status)
-			Status = true;
 		return;
 	}
+	else {
+		if (mPac.IsEnergized()) {
+			if (!Status)
+				Status = true;
+			return;
+		}
 
-	switch (TimedStatus) {
-	case false:
-		if (Status)
-			Status = false;
-		return;
-	case true:
-		if (!Status)
-			Status = true;
-		return;
+		switch (TimedStatus) {
+		case false:
+			if (Status)
+				Status = false;
+			return;
+		case true:
+			if (!Status)
+				Status = true;
+			return;
+		}
 	}
 
 }
@@ -293,7 +300,9 @@ void Ghost::UpdateFacing(Pac& mPac) {
 		if (!this->IsAlive())
 			this->ModFacing(this->GetDirection());
 		else
-			this->ModFacing(4);
+			if (!isAddedGhost) {
+				this->ModFacing(4);
+			}
 		return;
 	}
 
@@ -303,10 +312,10 @@ void Ghost::UpdateFacing(Pac& mPac) {
 
 void Ghost::UpdateSpeed(Pac& mPac) {
 	
-	/*if (isAddedGhost) {
-		this->ModSpeed = 6;
+	if (isAddedGhost) {
+		this->ModSpeed(2);
 		return;
-	}*/
+	}
 
 
 	if (!this->IsAlive() && this->GetSpeed() != 6) {
@@ -325,21 +334,24 @@ void Ghost::UpdateSpeed(Pac& mPac) {
 }
 
 void Ghost::Draw(Pac& mPac, Timer mGhostTimer, unsigned short mTimerTarget) {
-	//if (mPac.IsEnergized() && this->IsAlive() && !this->IsHome() && !isAddedGhost)
+	//if (mPac.IsEnergized() && this->IsAlive() && !this->IsHome())
 	if (mPac.IsEnergized() && this->IsAlive() && !this->IsHome()) {
-		Body.setColor(0, 0, 255);
-		if (mGhostTimer.GetTicks() > mTimerTarget - 2000) {
-			if ((mGhostTimer.GetTicks() / 250) % 2 == 1) {
-				Body.setColor(255, 255, 255);
-				Eyes.setColor(255, 0, 0);
-			}
-			else {
-				Eyes.setColor(255, 255, 255);
-			}
+		if (!isAddedGhost) {
+			Body.setColor(0, 0, 255);
+				if (mGhostTimer.GetTicks() > mTimerTarget - 2000) {
+					if ((mGhostTimer.GetTicks() / 250) % 2 == 1) {
+						Body.setColor(255, 255, 255);
+						Eyes.setColor(255, 0, 0);
+					}
+					else {
+						Eyes.setColor(255, 255, 255);
+					}
+				}
+				else {
+					Eyes.setColor(255, 255, 255);
+				}
 		}
-		else {
-			Eyes.setColor(255, 255, 255);
-		}
+		
 	}
 	else {
 		Eyes.setColor(255, 255, 255);
@@ -348,7 +360,6 @@ void Ghost::Draw(Pac& mPac, Timer mGhostTimer, unsigned short mTimerTarget) {
 
 	if (this->IsAlive()) {
 		CurrentClip = &GhostBodySpriteClips[CurrentBodyFrame / GhostBodyFrames];
-
 		if (isPlayExtra) {
 			Body.render(this->GetX(), this->GetY(), 0, CurrentClip);
 		}
@@ -357,7 +368,7 @@ void Ghost::Draw(Pac& mPac, Timer mGhostTimer, unsigned short mTimerTarget) {
 		}
 	}
 	CurrentClip = &GhostEyeSpriteClips[this->GetFacing()];
-	std::cout << "ghostX: " << this->GetX() << " ghostY: " << this->GetY();
+	//std::cout << "ghostX: " << this->GetX() << " ghostY: " << this->GetY();
 
 	if (isPlayExtra) {
 		Eyes.render(this->GetX(), this->GetY(), 0, CurrentClip);
@@ -369,5 +380,12 @@ void Ghost::Draw(Pac& mPac, Timer mGhostTimer, unsigned short mTimerTarget) {
 	if (CurrentBodyFrame / GhostBodyFrames >= GhostBodyFrames) {
 		CurrentBodyFrame = 0;
 	}
+}
 
+void Ghost::modIsAddedGhost(bool _isAddedGhost) {
+	isAddedGhost = _isAddedGhost;
+}
+
+bool Ghost::getIsAddedGhost() {
+	return isAddedGhost;
 }

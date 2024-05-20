@@ -12,6 +12,8 @@
 #include "Pinky.h"
 #include "Clyde.h"
 #include "Fruit.h"
+#include "AddedGhost.h"
+
 class Game {
 public:
 	Game();
@@ -60,7 +62,7 @@ private:
 	Pinky mPinky;
 	Clyde mClyde;
 	
-	//Blinky addedGhost;
+	AddedGhost addedGhost;
 
 	Fruit mFruit;
 	Timer MapAnimationTimer;

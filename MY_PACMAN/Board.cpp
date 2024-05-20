@@ -144,6 +144,11 @@ void Board::ResetPosition(Entity& mEntity) {
 			mEntity.ModY(y * BlockSize24);
 			return;
 		}
+		else if (CharBoard[i] == '5' && mEntity.GetIdentity() == EntityType::addedGhost) {
+			mEntity.ModX(x * BlockSize24 + BlockSize24 / 2);
+			mEntity.ModY(y * BlockSize24);
+			return;
+		}
 	}
 }
 

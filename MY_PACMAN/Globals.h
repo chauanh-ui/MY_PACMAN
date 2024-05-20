@@ -49,6 +49,7 @@ const SDL_Color Red = { 0xff, 0x00, 0x00 };
 const SDL_Color Cyan = { 0x00, 192, 0xff };
 const SDL_Color Pink = { 0xff, 192, 203 };
 const SDL_Color Orange = { 0xff, 128, 0x00 };
+const SDL_Color Green = { 3, 252, 32 }; // #03fc20
 
 extern SDL_Window* window;
 extern SDL_Renderer* renderer;
@@ -66,7 +67,7 @@ enum Direction {
 	Right, Up, Left, Down, Nowhere
 };
 enum EntityType {
-	ePacMan, eBlinky, eInky, ePinky, eClyde, Noone
+	ePacMan, eBlinky, eInky, ePinky, eClyde, addedGhost
 };
 
 

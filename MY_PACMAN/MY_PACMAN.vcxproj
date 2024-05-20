@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AddedGhost.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="Blinky.cpp" />
@@ -168,6 +169,7 @@
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AddedGhost.h" />
     <ClInclude Include="Animation.h" />
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="Blinky.h" />
