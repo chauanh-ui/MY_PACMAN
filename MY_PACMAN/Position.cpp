@@ -17,15 +17,18 @@ short Position::GetY() {
 	return this->y;
 }
 
+// return postion (x, y)
 Position Position::GetPos() {
 	Position MyPos(this->x, this->y);
 	return MyPos;
 }
 
+// modify x
 void Position::ModX(short NewX) {
 	this->x = NewX;
 }
 
+// modify y
 void Position::ModY(short NewY) {
 	this->y = NewY;
 }

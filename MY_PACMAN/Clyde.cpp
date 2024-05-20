@@ -3,8 +3,9 @@
 #include "Position.h"
 
 Clyde::Clyde() : Ghost(Orange, EntityType::eClyde) {
-	this->ScatterTarget.ModCoords(BlockSize24 / 2, 35 * BlockSize24 + BlockSize24 / 2);
-	this->Home.ModCoords(15 * BlockSize24 + BlockSize24 / 2, 17 * BlockSize24 + BlockSize24 / 2);
+		this->ScatterTarget.ModCoords(BlockSize24 / 2, 35 * BlockSize24 + BlockSize24 / 2);
+		this->Home.ModCoords(15 * BlockSize24 + BlockSize24 / 2, 17 * BlockSize24 + BlockSize24 / 2);
+	
 }
 
 void Clyde::CalculateTarget(Position mPac) {

@@ -33,6 +33,8 @@ void Game::ResetGhostsLifeStatement() {
 	mInky.ModLifeStatement(true);
 	mPinky.ModLifeStatement(true);
 	mClyde.ModLifeStatement(true);
+
+	//addGhost.ModLifeStatement(true);
 }
 
 void Game::ResetGhostsFacing() {
@@ -40,6 +42,8 @@ void Game::ResetGhostsFacing() {
 	mInky.ModFacing(1);
 	mPinky.ModFacing(1);
 	mClyde.ModFacing(1);
+
+	//addGhost.ModFacing(1);
 }
 
 void Game::Start() {
@@ -52,6 +56,11 @@ void Game::Start() {
 		mBoard.ResetPosition(mInky);
 		mBoard.ResetPosition(mPinky);
 		mBoard.ResetPosition(mClyde);
+		
+		//mBoard.ResetPosition(addGhost);
+
+
+
 		mPac.ChangeEnergyStatus(false);
 		this->ResetGhostsLifeStatement();
 		this->ResetGhostsFacing();
@@ -90,6 +99,9 @@ void Game::UpdatePositions(std::vector <unsigned char>& mover, bool TimedStatus)
 	mInky.UpdatePos(ActualMap, mPac, mBlinky, TimedStatus);
 	mPinky.UpdatePos(ActualMap, mPac, TimedStatus);
 	mClyde.UpdatePos(ActualMap, mPac, TimedStatus);
+	
+	//addedGhost.UpdatePos(ActualMap, mPac, TimedStatus);
+
 	mPac.UpdatePos(mover, ActualMap);
 }
 
@@ -213,7 +225,8 @@ void Game::DeadlyPacGhostColl() {
 		(mPac.IsColliding(mBlinky) && mBlinky.IsAlive()) ||
 		(mPac.IsColliding(mInky) && mInky.IsAlive()) ||
 		(mPac.IsColliding(mPinky) && mPinky.IsAlive()) ||
-		(mPac.IsColliding(mClyde) && mClyde.IsAlive())
+		(mPac.IsColliding(mClyde) && mClyde.IsAlive()) 
+		// ||(mPac.IsColliding(addedGhost) && addedGhost.IsAlive()) 
 		)
 		mPac.ModLifeStatement(false);
 }
@@ -353,6 +366,9 @@ void Game::Draw(Timer& GameTimer, unsigned short& StartTicks) {
 		mPinky.Draw(mPac, GhostTimer, ScatterTime);
 		mInky.Draw(mPac, GhostTimer, ScatterTime);
 		mBlinky.Draw(mPac, GhostTimer, ScatterTime);
+
+		//addedGhost.Draw(mPac, GhostTimer, ScatterTime);
+
 		this->DrawLittleScore();
 	}
 	mPac.Draw();

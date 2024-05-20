@@ -9,9 +9,9 @@ public:
 	short GetX();
 	short GetY();
 	Position GetPos();
-	void ModX(short NewX);
+	void ModX(short NewX); 
 	void ModY(short NewY);
-	void ModCoords(short NewX, short NewY);
+	void ModCoords(short NewX, short NewY); // modify coordinate
 	void ModPos(Position NewPos);
 	bool operator == (Position other);
 private:

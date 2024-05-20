@@ -115,6 +115,8 @@ private:
 	unsigned char CurrentBodyFrame;
 	bool CanUseDoor;
 	bool Status; // false -> chase	true -> scatter
+
+	//bool isAddedGhost;
 };
 
 #endif GHOST_H

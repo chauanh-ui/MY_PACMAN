@@ -147,6 +147,8 @@ Ghost::~Ghost() {
 
 bool Ghost::IsTargetToCalculate(Pac& mPac) {
 
+	// eyes get back to home
+
 	if (!this->IsAlive()) {
 		CanUseDoor = true;
 		Target.ModPos(Home);
@@ -154,8 +156,16 @@ bool Ghost::IsTargetToCalculate(Pac& mPac) {
 			this->ModLifeStatement(true);
 		return false;
 	}
-
+	/*if (isAddedGhost && !mPac.isEnergized()) {
+		Target.ModPos(Home);
+		return false;
+	}*/
+	// add ghost target == mPac.pos // target.ModPos == m.Pacpos
 	if (this->IsHome() && mPac.IsEnergized()) {
+		/*if (isAddedGhost) {
+			Target.ModPos(mPac->getPos());
+			return false;
+		}*/
 		if (this->GetPos() == Home.GetPos())
 			Target.ModY(this->Home.GetY() - BlockSize24);
 		else if (this->GetX() == Home.GetX() && this->GetY() == Home.GetY() - BlockSize24)
@@ -171,9 +181,9 @@ bool Ghost::IsTargetToCalculate(Pac& mPac) {
 
 	CanUseDoor = false;
 	switch (Status) {
-	case false:
+	case false: // chase
 		return true;
-	case true:
+	case true: //scatter
 		Target.ModPos(this->ScatterTarget);
 		return false;
 	}
@@ -240,6 +250,15 @@ void Ghost::ModStatus(bool NewStatus) {
 }
 
 void Ghost::UpdateStatus(Pac& mPac, bool TimedStatus) {
+	// false -> chase	true -> scatter
+	/*if (isAddedGhost) {
+	*	// if mPac is energized, then addGhost is chasing
+		if (mPac.IsEnergized()) {
+			Status = false;
+		}
+	} else {*/
+	
+
 
 	if (mPac.IsEnergized()) {
 		if (!Status)
@@ -283,6 +302,12 @@ void Ghost::UpdateFacing(Pac& mPac) {
 }
 
 void Ghost::UpdateSpeed(Pac& mPac) {
+	
+	/*if (isAddedGhost) {
+		this->ModSpeed = 6;
+		return;
+	}*/
+
 
 	if (!this->IsAlive() && this->GetSpeed() != 6) {
 		this->ModSpeed(6);
@@ -297,10 +322,10 @@ void Ghost::UpdateSpeed(Pac& mPac) {
 		if (this->GetSpeed() != 2)
 			this->ModSpeed(2);
 	}
-
 }
 
 void Ghost::Draw(Pac& mPac, Timer mGhostTimer, unsigned short mTimerTarget) {
+	//if (mPac.IsEnergized() && this->IsAlive() && !this->IsHome() && !isAddedGhost)
 	if (mPac.IsEnergized() && this->IsAlive() && !this->IsHome()) {
 		Body.setColor(0, 0, 255);
 		if (mGhostTimer.GetTicks() > mTimerTarget - 2000) {
@@ -344,4 +369,5 @@ void Ghost::Draw(Pac& mPac, Timer mGhostTimer, unsigned short mTimerTarget) {
 	if (CurrentBodyFrame / GhostBodyFrames >= GhostBodyFrames) {
 		CurrentBodyFrame = 0;
 	}
+
 }

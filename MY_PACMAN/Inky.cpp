@@ -12,8 +12,10 @@
 //	;
 //}
 Inky::Inky() : Ghost(Cyan, EntityType::eInky) {
-	this->ScatterTarget.ModCoords(26 * BlockSize24 + BlockSize24 / 2, 35 * BlockSize24 + BlockSize24 / 2);
-	this->Home.ModCoords(11 * BlockSize24 + BlockSize24 / 2, 17 * BlockSize24 + BlockSize24 / 2);
+	
+		this->ScatterTarget.ModCoords(26 * BlockSize24 + BlockSize24 / 2, 35 * BlockSize24 + BlockSize24 / 2);
+		this->Home.ModCoords(11 * BlockSize24 + BlockSize24 / 2, 17 * BlockSize24 + BlockSize24 / 2);
+	
 }
 
 void Inky::CalculateTarget(Entity mPac, Position mBlinky) {

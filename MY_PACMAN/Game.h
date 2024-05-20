@@ -59,6 +59,9 @@ private:
 	Inky mInky;
 	Pinky mPinky;
 	Clyde mClyde;
+	
+	//Blinky addedGhost;
+
 	Fruit mFruit;
 	Timer MapAnimationTimer;
 	LTexture Ready;

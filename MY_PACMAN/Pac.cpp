@@ -16,7 +16,8 @@ Pac::Pac() :Entity(EntityType::ePacMan) {
 	}
 	// if (pacType == 0)
 	//DeathPac.loadFromFile("Textures/GameOver32.png");
-	//if (isPlayExtra) {
+	//
+	//  {
 	//	InitFrames(LivingPacFrames, LivingPacSpriteClips, 16);
 	//	//InitFrames(DeathPacFrames, DeathPacSpriteClips, 16);
 	//} 

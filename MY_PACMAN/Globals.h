@@ -19,7 +19,11 @@ extern std::string CharBoard;
 
 // index of charboard string in extraBoards; // update in choose maze state
 extern int board;
+
 extern bool isPlayExtra;
+
+extern bool isGhostAdded;
+
 extern std::string extraBoards[numberOfBoards];
 
 // update in choose map theme state

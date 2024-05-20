@@ -1,7 +1,8 @@
 #include "Blinky.h"
 Blinky::Blinky() : Ghost(Red, EntityType::eBlinky) {
-	this->ScatterTarget.ModCoords(25 * BlockSize24 + BlockSize24 / 2, BlockSize24 / 2);
-	this->Home.ModCoords(13 * BlockSize24 + BlockSize24 / 2, 17 * BlockSize24 + BlockSize24 / 2);
+	
+		this->ScatterTarget.ModCoords(25 * BlockSize24 + BlockSize24 / 2, BlockSize24 / 2);
+		this->Home.ModCoords(13 * BlockSize24 + BlockSize24 / 2, 17 * BlockSize24 + BlockSize24 / 2);
 }
 
 void Blinky::CalculateTarget(Position mPac) {

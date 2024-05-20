@@ -1,8 +1,12 @@
 #include "Pinky.h"
 
 Pinky::Pinky() : Ghost(Pink, EntityType::ePinky) {
-	this->ScatterTarget.ModCoords(2 * BlockSize24 + BlockSize24 / 2, BlockSize24 / 2);
-	this->Home.ModCoords(13 * BlockSize24 + BlockSize24 / 2, 17 * BlockSize24 + BlockSize24 / 2);
+	
+	
+		this->ScatterTarget.ModCoords(2 * BlockSize24 + BlockSize24 / 2, BlockSize24 / 2);
+		this->Home.ModCoords(13 * BlockSize24 + BlockSize24 / 2, 17 * BlockSize24 + BlockSize24 / 2);
+	
+
 }
 
 void Pinky::CalculateTarget(Entity mPac) {
