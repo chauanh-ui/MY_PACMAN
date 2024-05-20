@@ -46,7 +46,7 @@ std::string CharBoard =
 "                            ";
 
 bool isPlayExtra = false;
-bool isGhostAdded = true;
+bool isGhostAdded = false;
 int board = 0;
 int mazeTexture = sand;
 

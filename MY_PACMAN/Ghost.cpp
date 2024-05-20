@@ -158,6 +158,11 @@ bool Ghost::IsTargetToCalculate(Pac& mPac) {
 	if (!this->IsAlive()) {
 		CanUseDoor = true;
 		Target.ModPos(Home);
+		if (isPlayExtra) {
+			if (!mPac.IsEnergized()) {
+				this->ModLifeStatement(true);
+			}
+		}
 		if (this->GetPos() == Home.GetPos())
 			this->ModLifeStatement(true);
 		return false;
