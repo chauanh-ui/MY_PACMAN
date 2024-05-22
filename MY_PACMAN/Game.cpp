@@ -252,6 +252,8 @@ void Game::DeadlyGhostPacColl(Ghost& mGhost) {
 		if (mGhost.getIsAddedGhost()) {
 			mGhost.ModLifeStatement(true);
 			mPac.ModLifeStatement(false);
+			mSound.StopScatterGhost();
+			mSound.PlayPacDeath();
 		}
 
 		mBoard.ScoreIncrease(Scorer);
