@@ -1,6 +1,8 @@
 
 #include "Game.h"
 #include <iostream>
+#include "GameOverState.h"
+#include "GameController.h"
 Game::Game() {
 	Ready.loadFromRenderedText("ready!", Yellow);
 
@@ -21,6 +23,7 @@ Game::Game() {
 	IsToWakaSound = true;
 	IsToDeathPacSound = true;
 	DeadGhostsCounter = 0;
+	IsGameOver = false;
 }
 
 Game::~Game() {
@@ -54,6 +57,7 @@ void Game::Start() {
 	if (!IsGameStarted) {
 		if (this->IsLevelCompleted()) {
 			mBoard.CopyBoard(ActualMap);
+			
 		}
 		mBoard.ResetPosition(mPac);
 		mBoard.ResetPosition(mBlinky);
@@ -356,6 +360,10 @@ bool Game::Process(Timer& GameTimer, std::vector<unsigned char>& mover, unsigned
 				if (mPac.IsDeadAnimationEnded()) {
 					this->ModStartStatement(false);
 				}
+				IsGameOver = true;
+				// change to game over state
+				this->DeathSound();
+				//GameController::getStateMachine()->changeState(new GameOverState());
 			}
 			this->DeathSound();
 		}
@@ -371,11 +379,11 @@ void Game::Draw(Timer& GameTimer, unsigned short& StartTicks) {
 	mBoard.SetHighScore();
 	mBoard.SetScore();
 	mBoard.Draw(ActualMap, MapAnimationTimer);
-	/*if (!IsGameStarted) {
-		std::cout << "Co render gameover k vay troi\n";
-		GameOverTexture.render(9 * BlockSize24, 20 * BlockSize24 - 5);
+	if (!IsGameStarted && IsGameOver) {
+		GameOverTexture.render(9 * BlockSize24, 20 * BlockSize24 - 5); // 144, 315
+		//GameController::getStateMachine()->changeState(new GameOverState());
 		return;
-	}*/
+	}
 	mFruit.Draw();
 	if (!MapAnimationTimer.isStarted()) {
 		mClyde.Draw(mPac, GhostTimer, ScatterTime);

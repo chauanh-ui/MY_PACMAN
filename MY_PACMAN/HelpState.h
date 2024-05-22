@@ -15,18 +15,19 @@ private:
 	static const std::string s_menuID;
 	//std::vector<Button*> menuButtons;
 	LTexture helpTexture;
+	static const int numberOfGhost = 4;
+
+	
+	LTexture ghosts[numberOfGhost];
+
 
 	Button* backButton;
+	Button* previousButton;
+	Button* nextButton;
 
-	/*Button* playExtraButton;
-	Button* helpButton;*/
-
-	//Button* chooseMapThemeButton;
-
-	// call back functions for menu items
-	
 
 	static void backButtonOnClick();
+	static void previousButtonOnClick();
+	static void nextButtonOnClick();
 
-	//static void chooseMapThemeButtonOnClick();
 };

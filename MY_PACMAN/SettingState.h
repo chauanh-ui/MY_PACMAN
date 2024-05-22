@@ -4,7 +4,7 @@
 
 class SettingState : public GameState {
 public:
-	virtual void update();
+	virtual void update(); 
 	virtual void render();
 	virtual bool onEnter();
 	virtual bool onExit();
@@ -12,20 +12,23 @@ public:
 	virtual std::string getStateID() const { return s_menuID; }
 private:
 	static const std::string s_menuID;
-	//std::vector<Button*> menuButtons;
+
 	LTexture settingTexture;
-	//Button* chooseMapColorButton;
-	Button* backButton;
 
-	/*Button* playExtraButton;
-	Button* helpButton;*/
+	LTexture addedGhostTexture;
+	LTexture greendyTexture;
 
-	//Button* chooseMapThemeButton;
+	Button* addButton; // isGhostAdded = true
 
-	// call back functions for menu items
-	//static void chooseMapColorButtonOnClick();
+	Button* minusButton; // isGhostAdd = false
 
-	static void backButtonOnClick();
+	Button* okButton; // change to menu state // pop state
+
 	
-	//static void chooseMapThemeButtonOnClick();
+	static void minusButtonOnClick();
+
+	static void addButtonOnClick();
+
+	static void okButtonOnClick();
+	
 };

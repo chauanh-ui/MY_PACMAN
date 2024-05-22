@@ -75,6 +75,10 @@ private:
 
 
 	bool IsGameStarted;
+
+	bool IsGameOver;
+
+
 	Timer GhostTimer;
 
 	unsigned short ScatterTime;

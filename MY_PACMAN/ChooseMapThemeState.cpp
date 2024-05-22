@@ -9,7 +9,6 @@ const std::string ChooseMapThemeState::s_menuID = "CHOOSE_MAP_THEME";
 void ChooseMapThemeState::update()
 {
 
-	std::cout << "cmc update\n";
 	water_button->update();
 	sand_button->update();
 	wood_button->update();
@@ -25,7 +24,6 @@ void ChooseMapThemeState::render()
 	{
 		menuButtons[i]->draw();
 	}*/
-	std::cout << "cmc render\n";
 	chooseMapThemeTexture.render(-OffsetX, -OffsetY);
 	water_button->draw();
 	sand_button->draw();
@@ -42,19 +40,20 @@ void ChooseMapThemeState::handleEvent(SDL_Event& event) {
 	leaf_button->handleEvents(event);
 	//play_Button->handleEvents(event);
 	backButton->handleEvents(event);
-
+	if (event.key.keysym.sym == SDLK_ESCAPE) {
+		GameController::getStateMachine()->changeState(new MenuState());
+	}
 }
 
 // tao va load anh va load button
 // goi ham khoi tao cua button
 bool ChooseMapThemeState::onEnter()
 {
-	std::cout << "entering choose map color state\n";
-	chooseMapThemeTexture.loadFromFile("Textures/ChooseMapColorState.png");
+	chooseMapThemeTexture.loadFromFile("Textures/ChooseMapTheme.png");
 	water_button = new Button("Textures/Button/water_button.png", 54, 200, water_button_on_click);
-	sand_button = new Button("Textures/Button/sand_button.png", 309, 200, sand_button_on_click);
-	wood_button = new Button("Textures/Button/wood_blue_button.png", 54, 436, wood_button_on_click);
-	leaf_button = new Button("Textures/Button/leaf_button.png", 309, 436, leaf_button_on_click);
+	sand_button = new Button("Textures/Button/sand_button.png", 339, 200, sand_button_on_click);
+	wood_button = new Button("Textures/Button/wood_button.png", 54, 436, wood_button_on_click);
+	leaf_button = new Button("Textures/Button/leaf_button.png", 339, 436, leaf_button_on_click);
 
 	//play_Button = new Button("Textures/Button/playButton.png", 200, 100, play_ButtonOnClick);
 	/*playExtraButton = new Button("Textures//Button//playExtraButton.png", 200, 300, playExtraButtonOnClick);
@@ -79,7 +78,6 @@ bool ChooseMapThemeState::onExit()
 	play_Button = nullptr;
 	delete backButton;
 	backButton = nullptr;*/
-	std::cout << "exiting ChooseMapColor\n";
 	return true;
 }
 
@@ -96,33 +94,23 @@ void ChooseMapThemeState::water_button_on_click()
 {
 	mazeTexture = water;
 	GameController::getStateMachine()->changeState(new ChooseMazeState());
-	std::cout << "color_01_button_on_click\n";
 }
 void ChooseMapThemeState::sand_button_on_click()
 {
 	mazeTexture = sand;
 	GameController::getStateMachine()->changeState(new ChooseMazeState());
-	std::cout << "color_02_button_on_click\n";
 }
 void ChooseMapThemeState::wood_button_on_click()
 {
 	mazeTexture = wood;
 	GameController::getStateMachine()->changeState(new ChooseMazeState());
-	std::cout << "color_03_button_on_click\n";
 }
 void ChooseMapThemeState::leaf_button_on_click()
 {
 	mazeTexture = leaf;
 	GameController::getStateMachine()->changeState(new ChooseMazeState());
-	std::cout << "color_04_button_on_click\n";
 }
 void ChooseMapThemeState::backButtonOnClick()
 {
 	GameController::getStateMachine()->changeState(new ChooseMazeState());
-	std::cout << "back button clicked\n";
 }
-//void ChooseMapColorState::play_ButtonOnClick()
-//{
-//	GameController::getStateMachine()->changeState(new PlayState());
-//	std::cout << "Play button clicked\n";
-//}

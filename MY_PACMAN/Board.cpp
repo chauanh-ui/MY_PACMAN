@@ -219,8 +219,30 @@ void Board::Draw(unsigned char ActualMap[], Timer MapAnimationTimer) {
 		// If (!isPlayExtra)
 		if ((MapAnimationTimer.GetTicks() / 250) % 2 == 1)
 			MapTexture.setColor(255, 255, 255);
-		else
-			MapTexture.setColor(0, 0, 255);
+		else {
+			switch (mapColor) {
+			case MapColor::map_blue:
+				MapTexture.setColor(48, 84, 181);
+				break;
+			case MapColor::map_green:
+				MapTexture.setColor(59, 141, 49);
+				//std::cout << "green\n";
+				break;
+			case MapColor::map_red:
+				MapTexture.setColor(209, 67, 129);
+				//std::cout << "pink\n";
+				break;
+			case MapColor::map_light_blue:
+				MapTexture.setColor(38, 177, 171);
+				//std::cout << "purple\n";
+				break;
+			default:
+				MapTexture.setColor(255, 255, 255);
+				//std::cout << "default\n";
+				break;
+			};
+		}
+			//MapTexture.setColor(0, 0, 255);
 	}
 }
 

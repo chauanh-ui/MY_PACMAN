@@ -149,6 +149,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameController.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameOverState.cpp" />
     <ClCompile Include="GameStateMachine.cpp" />
     <ClCompile Include="Ghost.cpp" />
     <ClCompile Include="Globals.cpp" />
@@ -160,6 +161,7 @@
     <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="Pac.cpp" />
     <ClCompile Include="Pacman.cpp" />
+    <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="Pinky.cpp" />
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="Position.cpp" />
@@ -185,6 +187,7 @@
     <ClInclude Include="Fruit.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameController.h" />
+    <ClInclude Include="GameOverState.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateMachine.h" />
     <ClInclude Include="GameStructure.h" />
@@ -198,6 +201,7 @@
     <ClInclude Include="MenuState.h" />
     <ClInclude Include="Pac.h" />
     <ClInclude Include="Pacman.h" />
+    <ClInclude Include="PauseState.h" />
     <ClInclude Include="Pinky.h" />
     <ClInclude Include="PlayState.h" />
     <ClInclude Include="Position.h" />

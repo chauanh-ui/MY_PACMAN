@@ -4,9 +4,9 @@ Pac::Pac() :Entity(EntityType::ePacMan) {
 	// if (pacType == 0) (==1, ==2)
 	if (isPlayExtra) {
 		LivingPac.loadFromFile("Textures/PacMan16.png");
-		//DeathPac.loadFromFile("Textures/GameOver16.png");
+		DeathPac.loadFromFile("Textures/GameOver16.png");
 		InitFrames(LivingPacFrames, LivingPacSpriteClips, 16);
-		//InitFrames(DeathPacFrames, DeathPacSpriteClips);
+		InitFrames(DeathPacFrames, DeathPacSpriteClips, 16);
 	}
 	else {
 		LivingPac.loadFromFile("Textures/PacMan32.png");
@@ -145,7 +145,13 @@ void Pac::Draw() {
 	}
 	else {
 		CurrentClip = &DeathPacSpriteClips[CurrDeathPacFrame / DeathPacFrames];
-		DeathPac.render(this->GetX() - 8, this->GetY() - 8, this->GetFacing(), CurrentClip);
+		if (isPlayExtra) {
+			DeathPac.render(this->GetX(), this->GetY(), this->GetFacing(), CurrentClip);
+		}
+		else {
+			DeathPac.render(this->GetX() - 8, this->GetY() - 8, this->GetFacing(), CurrentClip);
+		}
+		
 		CurrDeathPacFrame++;
 		if (CurrDeathPacFrame / DeathPacFrames >= DeathPacFrames) {
 			DeadAnimationStatement = true;

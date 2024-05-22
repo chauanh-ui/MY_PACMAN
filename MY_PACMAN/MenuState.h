@@ -17,12 +17,12 @@ private:
 	Button* playButton;
 	Button* playExtraButton;
 	Button* helpButton;
-	//Button* settingButton;
+	Button* settingButton;
 
 	// call back functions for menu items
 	static void playButtonOnClick();
 	static void playExtraButtonOnClick();
 	static void helpButtonOnClick();
-	//static void settingButtonOnClick();
+	static void settingButtonOnClick();
 
 };

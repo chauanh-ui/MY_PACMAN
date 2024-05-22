@@ -8,25 +8,27 @@ const std::string HelpState::s_menuID = "HelpState";
 void HelpState::update()
 {
 
-	std::cout << "setting update\n";
-	//chooseMapColorButton->update();
 	backButton->update();
+	previousButton->update();
+	nextButton->update();
 
 }
 void HelpState::render()
 {
-	// nothing for now
-	/*for (int i = 0; i < menuButtons.size(); i++)
-	{
-		menuButtons[i]->draw();
-	}*/
+	
 	std::cout << "help state render\n";
+	helpTexture.render(-OffsetX, -OffsetY);
+	ghosts[currentGhost].render(48 - OffsetX, 123 - OffsetY);
 	backButton->draw();
+	previousButton->draw();
+	nextButton->draw();
 }
 
 void HelpState::handleEvent(SDL_Event& event) {
 	//chooseMapColorButton->handleEvents(event);
 	backButton->handleEvents(event);
+	previousButton->handleEvents(event);
+	nextButton->handleEvents(event);
 
 }
 
@@ -34,10 +36,15 @@ void HelpState::handleEvent(SDL_Event& event) {
 // goi ham khoi tao cua button
 bool HelpState::onEnter()
 {
-	std::cout << "entering setting\n";
-	helpTexture.loadFromFile("Textures/Help.png");
+	currentGhost = 0;
+	helpTexture.loadFromFile("Textures/Help/Help.png");
+	for (int i = 0; i < numberOfGhost; i++) {
+		ghosts[i].loadFromFile("Textures/Help/" + std::to_string(i + 1) + ".png");
+	}
 	
-	backButton = new Button("Textures/Button/backButton.png", 224, 665, backButtonOnClick);
+	backButton = new Button("Textures/Button/backButton.png", 263, 584, backButtonOnClick);
+	previousButton = new Button("Textures/Button/previous_button.png", 230, 515, previousButtonOnClick);
+	nextButton = new Button("Textures/Button/next_button.png", 370, 515, nextButtonOnClick);
 	return true;
 }
 
@@ -57,4 +64,22 @@ void HelpState::backButtonOnClick()
 {
 	GameController::getStateMachine()->changeState(new MenuState());
 	std::cout << "back button clicked\n";
+}
+
+
+void HelpState::previousButtonOnClick()
+{
+	currentGhost--;
+	if (currentGhost < 0) {
+		currentGhost = 0;
+	}
+}
+
+
+void HelpState::nextButtonOnClick()
+{
+	currentGhost++;
+	if (currentGhost > numberOfGhost - 1) {
+		currentGhost = 0;
+	}
 }

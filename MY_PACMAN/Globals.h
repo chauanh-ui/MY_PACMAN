@@ -13,7 +13,7 @@ const unsigned short OffsetY = 50;
 const unsigned short WindowWidth = OffsetX + BoardWidth * BlockSize24 + OffsetX; // 548
 const unsigned short WindowHeight = OffsetY + BoardHeight * BlockSize24 + OffsetY; // 776
 
-const int numberOfBoards = 3;
+const int numberOfBoards = 5;
 
 extern std::string CharBoard;
 
@@ -28,6 +28,9 @@ extern std::string extraBoards[numberOfBoards];
 
 // update in choose map theme state
 extern int mazeTexture;
+
+extern int currentGhost;
+
 enum blockTexture {
 	water, sand, wood, leaf
 };

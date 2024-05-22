@@ -50,6 +50,8 @@ bool isGhostAdded = false;
 int board = 0;
 int mazeTexture = sand;
 
+int currentGhost = 0;
+
 
 std::string extraBoards[numberOfBoards] = {""};
 
@@ -145,7 +147,7 @@ std::string readStringFromCSVFile(const std::string& filePath, int numRows, int 
 
 void loadExtraBoards() {
 	for (int i = 0; i < numberOfBoards; i++) {
-		std::string path = "Maps/map_" + std::to_string(i) + ".txt";
+		std::string path = "Maps/map_" + std::to_string(i+1) + ".txt";
 		std::string board = readStringFromCSVFile(path, BoardHeight, BoardWidth);
 		extraBoards[i] = board;
 		std::cout << extraBoards[i].length() << std::endl;
