@@ -12,7 +12,7 @@ Dang Chau Anh - 23021461
 - SDL2 (for graphical interface)
 
 ## Description
-This a remake of a famouse game - Pacman. I add several features to make the game more interesting!!!
+This a remake of a famous game - Pacman. I add several features to make the game more interesting!!!
 
 ## Installation Guide
 1. Install Visual Studio.
@@ -22,7 +22,7 @@ This a remake of a famouse game - Pacman. I add several features to make the gam
 5. Run the application and enjoy the game.
 
 ## References
-I learn SDL from this website: https://lazyfoo.net/tutorials/SDL/, algorithms and game logic from: and  for the game from the book:
+I learn SDL from this website: https://lazyfoo.net/tutorials/SDL/, algorithms and game logic from: https://www.youtube.com/watch?v=OKs_JewEeOo&t=616s, and state-machine concept for the game from the book: SDL Game Development (Packt Publishing) by Shaun Mitchell
 
 Now let's take a closer look at some features: My game has two main mode: PLAY, PLAY EXTRA, GHOST-ADDED MODE
 
